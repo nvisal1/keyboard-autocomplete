@@ -17,12 +17,46 @@ export class Trie implements SearchDriver {
         return this._treeSize;
     }
     
-    // Search key in the trie 
-    // Returns true if key presents  
-    // in trie, else false 
-    search(key: string): string {
-        return '';
+    search(key: string): string[] {
+        const characters = key.split('');
+        let currentNode = this.root;
+        let matchingPrefix = '';
+
+        for (let i = 0; i < characters.length; i++) {
+            if(currentNode.children.has(characters[i])) {
+                matchingPrefix += characters[i];
+                currentNode = <TrieNode>currentNode.children.get(characters[i]);
+            } else {
+                break;
+            }
+        }
+
+        const allWords = this.getAllWords(matchingPrefix, currentNode);
+
+        return allWords;
+
     }
+
+    private getAllWords(matchingPrefix: string, currentNode: TrieNode, allWords: string[] = [], maxStringLength = 0): string[] {
+        const keys =[ ...currentNode.children.keys() ];
+        for (let index in keys) {
+            const child = <TrieNode>currentNode.children.get(keys[index]);
+            var newString = matchingPrefix + keys[index];
+            if (allWords.length === 5 && newString.length >= maxStringLength) {
+                break;
+            }
+            if (child.isEnd) {
+                if (maxStringLength < newString.length) {
+                    maxStringLength = newString.length;
+                }
+                allWords.push(newString);
+            }
+            
+            allWords = this.getAllWords(newString, child, allWords, maxStringLength);
+        }
+
+        return allWords
+    };
 
     /*
         1. Iterate over each character in the given key
@@ -35,16 +69,16 @@ export class Trie implements SearchDriver {
         const characters = key.split('');
         let currentNode = this.root;
 
-        characters.forEach((character: string) => {
+        characters.forEach((character: string, index: number) => {
             if (currentNode.children.has(character)) {
                 currentNode = <TrieNode>currentNode.children.get(character);
             } else {
                 // Set new node as a child of the current node and switch
                 // current node to newly created node.
-                currentNode.children.set(character, new TrieNode(character));
+                currentNode.children.set(character, new TrieNode());
                 this._treeSize += 1;
 
-                currentNode = <TrieNode>currentNode.children.get(character);
+                currentNode  = <TrieNode>currentNode.children.get(character);
             }
         });
 
