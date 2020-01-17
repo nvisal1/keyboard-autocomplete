@@ -1,4 +1,4 @@
 export interface SearchDriver {
-    search(): string;
-    insert(): void;
+    search(key: string): string;
+    insert(key: string): void;
 }
