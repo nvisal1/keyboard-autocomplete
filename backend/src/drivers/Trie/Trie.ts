@@ -14,7 +14,7 @@ export class Trie implements SearchDriver {
     // Returns the number of nodes
     // within the tree instance
     get treeSize(): number {
-        return this.treeSize;
+        return this._treeSize;
     }
     
     // Search key in the trie 
@@ -43,7 +43,7 @@ export class Trie implements SearchDriver {
                 // current node to newly created node.
                 currentNode.children.set(character, new TrieNode(character));
                 this._treeSize += 1;
-                
+
                 currentNode = <TrieNode>currentNode.children.get(character);
             }
         });
