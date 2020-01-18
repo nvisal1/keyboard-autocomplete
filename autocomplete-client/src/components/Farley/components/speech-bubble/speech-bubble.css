@@ -1,0 +1,21 @@
+.speech-bubble__text-container {
+    width: 250px;
+    border-radius: 15px;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-size: 48px;
+    color: #4A4A4A;
+}
+
+.speech-bubble__pointer-container {
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid white;
+    position: relative;
+    right: 30px;
+
+}

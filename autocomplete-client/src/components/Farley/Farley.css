@@ -2,6 +2,12 @@
 
 }
 
-img {
+.farley__image-container {
     height: 200px;
+}
+
+.farley__speech-bubble-container {
+    position: absolute;
+    bottom: 90px;
+    left: 190px;
 }
