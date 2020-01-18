@@ -1,6 +1,12 @@
 import { Router, Request, Response, } from 'express';
 import { Autocomplete } from '../../../api-providers/autocomplete';
 import { mapErrorToResponseData, ResourceError, ResourceErrorReason } from '../../../shared/errors';
+import { Candidate } from '../../../shared/types/Candidate';
+
+type HTTPCandidate = {
+    word: string;
+    confidence: number;
+}
 
 const autocompleteProvider = new Autocomplete();
 
@@ -24,8 +30,13 @@ async function getWords(req: Request, res: Response): Promise<void> {
 
             handleError(badRequestError, res);
         } else {
-            const candidates = autocompleteProvider.getWords(fragment);
-            res.status(200).json(candidates);
+            const candidates = await autocompleteProvider.getWords(fragment);
+
+            let response: HTTPCandidate[] = [];
+            candidates.forEach((candidate: Candidate) => {
+                response.push({ word: candidate.getWord(), confidence: candidate.getConfidence() })
+            });
+            res.status(200).json(response);
         }
 
     } catch (error) {

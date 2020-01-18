@@ -4,32 +4,49 @@ import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import Input from './components/input/input';
 import Farley from './components/Farley/Farley';
+import server from './shared/server';
+import { Candidate } from './shared/types/Candidate';
 
-const App: React.FC = () => {
-  return (
-    <div className='Autocomplete-client'>
-      <div className='Autocomplete-client__Navbar-container'>
-        <Navbar></Navbar>
-      </div>
-
-      <div className='Autocomplete-client__Input-container '>
-        <Input handleInput = { handleInput }></Input>
-      </div>
-
-      <div className='Autocomplete-client__Farley-container'>
-        <Farley></Farley>
-      </div>
-
-      <div className='Autocomplete-client__Footer-container'>
-        <Footer></Footer>
-      </div>
-
-    </div>
-  );
+interface AppState {
+  candidates: Candidate[];
 }
 
-function handleInput(text: string) {
-  console.log(text);
-}
+class App extends React.Component<any, AppState> {
 
+  constructor(props: any) {
+    super(props)
+    this.state = {
+        candidates: []
+    }
+  }
+
+  render() { 
+    return (
+      <div className='Autocomplete-client'>
+        <div className='Autocomplete-client__Navbar-container'>
+          <Navbar></Navbar>
+        </div>
+
+        <div className='Autocomplete-client__Input-container '>
+          <Input handleInput = { this.handleInput }></Input>
+        </div>
+
+        <div className='Autocomplete-client__Farley-container'>
+          <Farley candidates={ this.state.candidates }></Farley>
+        </div>
+
+        <div className='Autocomplete-client__Footer-container'>
+          <Footer></Footer>
+        </div>
+      </div>
+    );
+  }
+
+  handleInput = async(text: string): Promise<void> => {
+    const response = await server().get(`/candidates?text=${ text }`);
+    const candidates: Candidate[] = response.data;
+    this.setState({ candidates });
+ 
+  }
+}
 export default App;

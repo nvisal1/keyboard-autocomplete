@@ -17,5 +17,8 @@
     border-right: 10px solid white;
     position: relative;
     right: 30px;
+}
 
+.speech-bubble__text-container__word {
+    margin: 0;
 }

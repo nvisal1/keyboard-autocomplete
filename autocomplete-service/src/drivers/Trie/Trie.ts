@@ -19,6 +19,7 @@ export class Trie implements SearchDriver {
     }
     
     search(key: string): Candidate[] {
+        console.log('size', this._treeSize);
         const characters = key.split('');
         let currentNode = this.root;
         let matchingPrefix = '';
@@ -36,7 +37,7 @@ export class Trie implements SearchDriver {
 
         const matches = this.getMatches(matchingPrefix, currentNode);
 
-        const candidates = matches.map((match: string) => new Candidate(match, match.length))
+        const candidates = matches.map((match: string) => new Candidate(match, match.length));
 
         return candidates;
 
