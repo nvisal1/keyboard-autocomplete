@@ -7,3 +7,14 @@
   background-color: #6C6C6C;
 }
 
+.Autocomplete-client__Navbar-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.Autocomplete-client__Footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
