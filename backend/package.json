@@ -9,9 +9,15 @@
   "author": "Nick Visalli",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@types/jest": "^24.9.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.3.0",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }

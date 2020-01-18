@@ -1,5 +1,6 @@
-import { SearchDriver } from '../../interfaces';
+import { SearchDriver } from '../../shared/interfaces';
 import { TrieNode } from './TrieNode';
+import { Candidate } from '../../shared/types/Candidate';
 
 export class Trie implements SearchDriver {
 
@@ -17,7 +18,7 @@ export class Trie implements SearchDriver {
         return this._treeSize;
     }
     
-    search(key: string): string[] {
+    search(key: string): Candidate[] {
         const characters = key.split('');
         let currentNode = this.root;
         let matchingPrefix = '';
@@ -27,36 +28,19 @@ export class Trie implements SearchDriver {
                 matchingPrefix += characters[i];
                 currentNode = <TrieNode>currentNode.children.get(characters[i]);
             } else {
+                // The current node represents the end of the matching prefix
+                // break out of loop
                 break;
             }
         }
 
-        const allWords = this.getAllWords(matchingPrefix, currentNode);
+        const matches = this.getMatches(matchingPrefix, currentNode);
 
-        return allWords;
+        const candidates = matches.map((match: string) => new Candidate(match, match.length))
+
+        return candidates;
 
     }
-
-    private getAllWords(matchingPrefix: string, currentNode: TrieNode, allWords: string[] = [], maxStringLength = 0): string[] {
-        const keys =[ ...currentNode.children.keys() ];
-        for (let index in keys) {
-            const child = <TrieNode>currentNode.children.get(keys[index]);
-            var newString = matchingPrefix + keys[index];
-            if (allWords.length === 5 && newString.length >= maxStringLength) {
-                break;
-            }
-            if (child.isEnd) {
-                if (maxStringLength < newString.length) {
-                    maxStringLength = newString.length;
-                }
-                allWords.push(newString);
-            }
-            
-            allWords = this.getAllWords(newString, child, allWords, maxStringLength);
-        }
-
-        return allWords
-    };
 
     /*
         1. Iterate over each character in the given key
@@ -84,4 +68,26 @@ export class Trie implements SearchDriver {
 
         currentNode.isEnd = true;
     }
+
+
+    private getMatches(matchingPrefix: string, currentNode: TrieNode, allWords: string[] = [], maxStringLength = 0): string[] {
+        const keys =[ ...currentNode.children.keys() ];
+        for (let index in keys) {
+            const child = <TrieNode>currentNode.children.get(keys[index]);
+            var newString = matchingPrefix + keys[index];
+            if (allWords.length === 5 && newString.length >= maxStringLength) {
+                break;
+            }
+            if (child.isEnd) {
+                if (maxStringLength < newString.length) {
+                    maxStringLength = newString.length;
+                }
+                allWords.push(newString);
+            }
+            
+            allWords = this.getMatches(newString, child, allWords, maxStringLength);
+        }
+
+        return allWords
+    };
 }
