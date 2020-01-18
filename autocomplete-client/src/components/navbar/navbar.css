@@ -1,4 +1,14 @@
 .navbar {
     background-color: white;
     height: 150px;
+    padding-top: 50px;
+    padding-left: 200px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.navbar__options-container {
+    display: grid;
+    grid-template-columns: 200px 200px 250px;
+    margin: auto;
 }

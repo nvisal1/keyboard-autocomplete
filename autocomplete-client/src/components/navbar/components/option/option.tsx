@@ -1,15 +1,33 @@
 import React from 'react';
+import './option.css';
 
 interface OptionProps {
-    option: string,
+    text: string,
+    isSelected: boolean,
+    handleClick: Function,
 }
 
 const Option: React.FC<OptionProps> = props => {
-    return (
-        <div className='option'>
-       
-        </div>
-    );
+    const { text, isSelected, handleClick } = props;
+    if (isSelected) {
+        return (
+            <div 
+                className='option'
+                onClick={ () => props.handleClick(text) }
+            >
+                { text }
+            </div>
+        );
+    } else {
+        return (
+            <div 
+                className='option'
+                onClick={ () => props.handleClick(text) }
+            >
+                { text }
+            </div>
+        );
+    }
 }
 
 export default Option;
