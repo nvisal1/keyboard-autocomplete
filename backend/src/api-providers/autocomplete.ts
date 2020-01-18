@@ -1,5 +1,6 @@
-import { AutocompleteProvider, Candidate, SearchDriver } from '../shared/interfaces';
+import { AutocompleteProvider } from '../shared/interfaces';
 import { SEARCH_DRIVER } from '../drivers';
+import { Candidate } from '../shared/types/Candidate';
 
 export class Autocomplete implements AutocompleteProvider {
 

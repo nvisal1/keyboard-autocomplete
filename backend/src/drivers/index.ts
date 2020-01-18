@@ -1,7 +1,11 @@
 import { Trie } from './Trie/Trie';
 import { SearchDriver } from '../shared/interfaces';
 
-const SEARCH_DRIVER: SearchDriver = new Trie();
+let SEARCH_DRIVER: SearchDriver
+
+export function setDrivers(): void {
+    SEARCH_DRIVER = new Trie();
+}
 
 export {
     SEARCH_DRIVER

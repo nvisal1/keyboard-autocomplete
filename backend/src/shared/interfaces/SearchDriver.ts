@@ -1,4 +1,4 @@
-import { Candidate } from '.';
+import { Candidate } from '../types/Candidate';
 
 export interface SearchDriver {
     search(key: string): Candidate[];

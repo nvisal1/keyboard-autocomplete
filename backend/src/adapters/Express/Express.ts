@@ -5,6 +5,8 @@ import * as http from 'http';
 import { buildAdapter } from './routes/routes';
 import { ServiceError, ServiceErrorReason } from '../../shared/errors';
 
+const PORT = 5000;
+
 export class Express {
 
     static app: express.Express;
@@ -43,7 +45,7 @@ export class Express {
 
         app.use(cors({ origin: true, credentials: true }));
 
-        app.set('port', process.env.PORT);
+        app.set('port', PORT);
 
         app.set('trust proxy', true);
     }
@@ -54,8 +56,8 @@ export class Express {
 
     startServer(app: express.Express) {
         const server = http.createServer(app);
-        server.listen(process.env.PORT, () =>
-            console.log(`Autocomplete Service running on port: ${process.env.PORT}`),
+        server.listen(PORT, () =>
+            console.log(`Autocomplete Service running on port: ${ PORT }`),
         );
     }
   }

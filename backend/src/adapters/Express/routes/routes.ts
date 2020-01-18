@@ -23,10 +23,11 @@ async function getWords(req: Request, res: Response): Promise<void> {
             );
 
             handleError(badRequestError, res);
+        } else {
+            const candidates = autocompleteProvider.getWords(fragment);
+            res.status(200).json(candidates);
         }
 
-        const candidates = autocompleteProvider.getWords(fragment);
-        res.status(200).json(candidates);
     } catch (error) {
         handleError(error, res);
     }
@@ -44,10 +45,11 @@ async function train(req: Request, res: Response): Promise<void> {
             );
 
             handleError(badRequestError, res);
+        } else {
+            autocompleteProvider.train(passage);
+            res.sendStatus(204);
         }
 
-        autocompleteProvider.train(passage);
-        res.sendStatus(204);
     } catch (error) {
         handleError(error, res);
     }

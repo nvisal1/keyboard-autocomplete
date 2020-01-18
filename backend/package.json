@@ -4,7 +4,10 @@
   "description": "Autocomplete service",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/jest"
+    "test": "node_modules/.bin/jest",
+    "watch": "npx tsc -w",
+    "build": "npx tsc",
+    "start": "node ./dist/app.js"
   },
   "author": "Nick Visalli",
   "license": "ISC",

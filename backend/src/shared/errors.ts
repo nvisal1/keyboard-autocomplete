@@ -52,6 +52,9 @@ export enum ServiceErrorReason {
       message: error.message,
     };
     switch (error.name) {
+      case ResourceErrorReason.BAD_REQUEST:
+        status.code = 400;
+        break;
       case ResourceErrorReason.INVALID_ACCESS:
         status.code = 401;
         break;
