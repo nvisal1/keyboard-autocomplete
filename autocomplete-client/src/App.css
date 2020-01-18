@@ -21,8 +21,14 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.Autocomplete-client__Farley-container {
+  position: absolute;
+  bottom: 70px;
+}
+
 .Autocomplete-client__Footer-container {
   position: absolute;
   bottom: 0;
   width: 100%;
+  z-index: -1;
 }
