@@ -1,4 +1,4 @@
-import { Candidate } from '../../shared/types/Candidate';
+import { Candidate } from '../types/Candidate';
 
 export interface AutocompleteProvider {
     getWords(fragment: string) : Promise<Candidate[]>; // returns list of candidates ordered by confidence*
