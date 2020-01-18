@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
+import Input from './components/input/input';
 
 const App: React.FC = () => {
   return (
@@ -10,12 +11,20 @@ const App: React.FC = () => {
         <Navbar></Navbar>
       </div>
 
+      <div className='Autocomplete-client__Input-container '>
+        <Input handleInput = { handleInput }></Input>
+      </div>
+
       <div className='Autocomplete-client__Footer-container'>
         <Footer></Footer>
       </div>
 
     </div>
   );
+}
+
+function handleInput(text: string) {
+  console.log(text);
 }
 
 export default App;
