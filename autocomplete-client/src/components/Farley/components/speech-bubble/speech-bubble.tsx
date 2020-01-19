@@ -9,7 +9,7 @@ interface SpeechBubbleProps {
 function renderCandidates(candidates: Candidate[]) {
     return candidates.map((candidate: Candidate) => {
         return (
-            <p className='speech-bubble__text-container__word'>{ candidate.word }</p>
+            <p className='speech-bubble__text-container__word'>{ `${candidate.word}(${candidate.confidence})` }</p>
         );
     });
 }

@@ -39,7 +39,7 @@ export class Trie implements SearchDriver {
 
         const matches = this.getMatches(matchingPrefix, currentNode);
 
-        const candidates = matches.map((match: string) => new Candidate(match, match.length));
+        const candidates = matches.map((match: string) => new Candidate(match, match.length - matchingPrefix.length));
 
         return candidates;
 

@@ -52,7 +52,6 @@ class App extends React.Component<any, AppState> {
     } catch (error) {
       this.setState({ candidates: [] });
     }
-   
   }
 }
 export default App;
