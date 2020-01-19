@@ -1,7 +1,6 @@
-.option {
+.option-container__text {
     font-family: 'Arial';
     font-size: 36px;
-    color: #4A4A4A;
     cursor: pointer;
 }
 

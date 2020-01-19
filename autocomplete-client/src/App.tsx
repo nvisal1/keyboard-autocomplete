@@ -6,11 +6,15 @@ import Input from './components/input/input';
 import Farley from './components/Farley/Farley';
 import server from './shared/server';
 import { Candidate } from './shared/types/Candidate';
+import TrainForm from './components/train-form/train-form';
+
+const modes = ['Search', 'Train', 'Search & Train'];
 
 interface AppState {
   candidates: Candidate[];
   farleySteps: number;
   text: string;
+  mode: string;
 }
 
 const MAX_FARLEY_STEPS = window.innerWidth - 500;
@@ -23,6 +27,7 @@ class App extends React.Component<any, AppState> {
         candidates: [],
         farleySteps: 0,
         text: '',
+        mode: modes[0],
     }
   }
 
@@ -30,14 +35,15 @@ class App extends React.Component<any, AppState> {
     return (
       <div className='Autocomplete-client'>
         <div className='Autocomplete-client__Navbar-container'>
-          <Navbar></Navbar>
+          <Navbar 
+            selectedOption={ this.state.mode }
+            options={ modes }
+            handleClick={ this.handleModeChange }
+          ></Navbar>
         </div>
 
         <div className='Autocomplete-client__Input-container '>
-          <Input 
-            handleInput = { this.handleInput }
-            text = { this.state.text }
-          ></Input>
+          { this.renderInput() }  
         </div>
 
         <div className='Autocomplete-client__Farley-container' style={ { marginLeft: this.state.farleySteps + 'px' } }>
@@ -52,6 +58,23 @@ class App extends React.Component<any, AppState> {
         </div>
       </div>
     );
+  }
+
+  renderInput() {
+    if (this.state.mode === 'Search') {
+      return (
+        <Input 
+          handleInput={ this.handleInput }
+          text={ this.state.text }
+        ></Input>
+      ) 
+    } else {
+      return (
+        <TrainForm
+          handleSubmit={ this.handleTrainSubmission }
+        ></TrainForm>
+      )
+    }
   }
 
   handleInput = async(text: string): Promise<void> => {
@@ -78,6 +101,16 @@ class App extends React.Component<any, AppState> {
       updatedText += token + ' ';
     });
     this.setState({ text: updatedText, candidates: [] });
+  }
+
+  handleModeChange = (mode: string) => {
+    this.setState({ mode });
+  }
+
+  handleTrainSubmission = async (passage: string) => {
+    console.log(passage);
+    const body = { passage };
+    await server().post('/train', body);
   }
 }
 export default App;

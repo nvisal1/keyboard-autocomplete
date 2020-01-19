@@ -8,26 +8,19 @@ interface OptionProps {
 }
 
 const Option: React.FC<OptionProps> = props => {
+
     const { text, isSelected, handleClick } = props;
-    if (isSelected) {
-        return (
-            <div 
-                className='option'
-                onClick={ () => props.handleClick(text) }
-            >
-                { text }
-            </div>
-        );
-    } else {
-        return (
-            <div 
-                className='option'
-                onClick={ () => props.handleClick(text) }
-            >
-                { text }
-            </div>
-        );
-    }
+
+    return (
+        <div 
+            className='option-container__text'
+            onClick={ () => handleClick(text) }
+            style={ isSelected ? { color: '#BE1E2D' } : { color: '#4A4A4A' }}
+        >
+            { text }
+        </div>
+    );
 }
+
 
 export default Option;

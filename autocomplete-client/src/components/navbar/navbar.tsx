@@ -2,41 +2,31 @@ import React from 'react';
 import './navbar.css';
 import Option from './components/option/option';
 
-const options = new Map([
-    ['Train', false],  
-    ['Search', true],
-    ['Search & Train', false],
-]);
+interface NavbarProps {
+    options: string[];
+    selectedOption: string;
+    handleClick: Function;
+}
 
-let currentSelectionKey = 'search';
-
-function renderOptionList() {
-    const iterableOptions = Array.from(options.entries());
-    return iterableOptions.map((option) => {
-        const key = option[0];
-        const value = option[1];
+function renderOptions(options: string[], selectedOption: string, handleClick: Function) {
+    return options.map((option: string) => {
       return (
         <Option 
-            key= { key }
-            text= { key }
-            isSelected = { value }
-            handleClick = { selectOption }
+            key= { option }
+            text= { option }
+            isSelected = { option === selectedOption }
+            handleClick = { handleClick }
         ></Option>
       );
     });
 }
 
-function selectOption(option: string) {
-    options.set(currentSelectionKey, false);
-    options.set(option, true);
-    currentSelectionKey = option; 
-}
-
-const Navbar: React.FC<{}> = props => {
+const Navbar: React.FC<NavbarProps> = props => {
+    const { options, selectedOption, handleClick } = props;
     return (
         <div className='navbar'>
             <div className='navbar__options-container'>
-                { renderOptionList() }
+                { renderOptions(options, selectedOption, handleClick)}
             </div>
         </div>
     );
