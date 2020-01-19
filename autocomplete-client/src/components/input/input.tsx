@@ -1,8 +1,11 @@
 import React from 'react';
 import './input.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 interface InputProps {
     handleInput: Function,
+   // selectedWord: string,
 }
 
 interface InputState {
@@ -25,11 +28,17 @@ class Input extends React.Component<InputProps, InputState> {
 
     render() {
         return (
-            <input 
-                className='input'
-                value={ this.state.text }
-                onChange={ this.handleOnChangeEvent.bind(this) }
-            ></input>
+            <div className='input-container'>
+                <span className='input__icon-cntainer'>
+                    <FontAwesomeIcon icon={ faSearch } />
+                </span>
+                <input 
+                    className='input-container__input'
+                    value={ this.state.text }
+                    onChange={ this.handleOnChangeEvent.bind(this) }
+                ></input>
+            </div>
+
         );
     }
     

@@ -10,6 +10,7 @@ import { Candidate } from './shared/types/Candidate';
 interface AppState {
   candidates: Candidate[];
   farleySteps: number;
+  selectedWord: string;
 }
 
 const MAX_FARLEY_STEPS = window.innerWidth - 500;
@@ -21,6 +22,7 @@ class App extends React.Component<any, AppState> {
     this.state = {
         candidates: [],
         farleySteps: 0,
+        selectedWord: '',
     }
   }
 
@@ -32,11 +34,17 @@ class App extends React.Component<any, AppState> {
         </div>
 
         <div className='Autocomplete-client__Input-container '>
-          <Input handleInput = { this.handleInput }></Input>
+          <Input 
+            handleInput = { this.handleInput }
+            
+          ></Input>
         </div>
 
         <div className='Autocomplete-client__Farley-container' style={ { marginLeft: this.state.farleySteps + 'px' } }>
-          <Farley candidates={ this.state.candidates }></Farley>
+          <Farley 
+            candidates={ this.state.candidates }
+            handleClick={ this.handleCandidateSelection }
+          ></Farley>
         </div>
 
         <div className='Autocomplete-client__Footer-container'>
@@ -56,6 +64,10 @@ class App extends React.Component<any, AppState> {
     } catch (error) {
       this.setState({ candidates: [] });
     }
+  }
+
+  handleCandidateSelection = (word: string): void => {
+    this.setState({ selectedWord: word });
   }
 }
 export default App;

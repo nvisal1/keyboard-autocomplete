@@ -20,4 +20,11 @@
 
 .speech-bubble__text-container__word {
     margin: 0;
+    cursor: pointer;
+}
+
+.speech-bubble__text-container__word:hover {
+    background-color: #BE1E2D;
+    color: white;
+    border-radius: 15px;
 }

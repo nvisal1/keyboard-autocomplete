@@ -1,13 +1,21 @@
-.input {
-    border: none;
+.input-container {
+    padding-left: 20px;
     border-radius: 15px;
-    outline: none;
     height: 100px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     color: white;
     background-color: #BE1E2D;
     font-size: 48px;
+}
+
+.input-container__input {
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #BE1E2D;
+    font-size: 48px;
+    color: white;
 }
