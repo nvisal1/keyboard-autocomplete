@@ -10,7 +10,7 @@ import { Candidate } from './shared/types/Candidate';
 interface AppState {
   candidates: Candidate[];
   farleySteps: number;
-  selectedWord: string;
+  text: string;
 }
 
 const MAX_FARLEY_STEPS = window.innerWidth - 500;
@@ -22,7 +22,7 @@ class App extends React.Component<any, AppState> {
     this.state = {
         candidates: [],
         farleySteps: 0,
-        selectedWord: '',
+        text: '',
     }
   }
 
@@ -36,7 +36,7 @@ class App extends React.Component<any, AppState> {
         <div className='Autocomplete-client__Input-container '>
           <Input 
             handleInput = { this.handleInput }
-            
+            text = { this.state.text }
           ></Input>
         </div>
 
@@ -56,18 +56,28 @@ class App extends React.Component<any, AppState> {
 
   handleInput = async(text: string): Promise<void> => {
     try {
+      this.setState({  text });
       const tokens = text.split(' '); 
       const currentFragment = tokens[tokens.length - 1];
       const response = await server().get(`/candidates?text=${ currentFragment }`);
       const candidates: Candidate[] = response.data;
-      this.setState({ candidates, farleySteps: MAX_FARLEY_STEPS > text.length * 15 ? text.length * 15 : this.state.farleySteps });
+      this.setState({ 
+        candidates, 
+        farleySteps: MAX_FARLEY_STEPS > text.length * 15 ? text.length * 15 : this.state.farleySteps,
+      });
     } catch (error) {
       this.setState({ candidates: [] });
     }
   }
 
   handleCandidateSelection = (word: string): void => {
-    this.setState({ selectedWord: word });
+    const tokens = this.state.text.split(' '); 
+    tokens[tokens.length - 1] = word;
+    let updatedText = '';
+    tokens.forEach((token: string) => {
+      updatedText += token + ' ';
+    });
+    this.setState({ text: updatedText, candidates: [] });
   }
 }
 export default App;
