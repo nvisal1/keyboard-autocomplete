@@ -21,6 +21,14 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.Autocomplete-client__train-form-container {
+  width: 80%;
+  height: 50%;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
 .Autocomplete-client__Farley-container {
   position: absolute;
   bottom: 70px;

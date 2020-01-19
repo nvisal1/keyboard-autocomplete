@@ -1,0 +1,33 @@
+.train-form {
+    background-color: #BE1E2D;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.train-form__textarea {
+    width: 100%;
+    height: 300px;
+    background-color: #BE1E2D;
+    border: none;
+    resize: none;
+    font-size: 48px;
+    color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    outline: none;
+}
+
+.train-form__submit-button {
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    height: 100px;
+    width: 250px;
+    font-size: 36px;
+    color: #4A4A4A;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+

@@ -16,9 +16,14 @@ function onSubmit(event: React.FormEvent<HTMLFormElement>, handleSubmit: Functio
 const TrainForm: React.FC<TrainFormProps> = props => {
     const { handleSubmit } = props;
     return (
-        <form className='navbar' onSubmit={ (e) => { onSubmit(e, handleSubmit) } }>
-            <textarea name='training-passage' cols={ 30 } rows= { 10 }></textarea>
-            <button>Submit</button>
+        <form className='train-form' onSubmit={ (e) => { onSubmit(e, handleSubmit) } }>
+            <textarea  
+                className='train-form__textarea'
+                name='training-passage'
+                cols={ 30 }
+                rows= { 10 }
+            ></textarea>
+            <button className='train-form__submit-button'>Submit</button>
         </form>
     );
 }

@@ -42,9 +42,7 @@ class App extends React.Component<any, AppState> {
           ></Navbar>
         </div>
 
-        <div className='Autocomplete-client__Input-container '>
-          { this.renderInput() }  
-        </div>
+        { this.renderInput() }  
 
         <div className='Autocomplete-client__Farley-container' style={ { marginLeft: this.state.farleySteps + 'px' } }>
           <Farley 
@@ -63,17 +61,21 @@ class App extends React.Component<any, AppState> {
   renderInput() {
     if (this.state.mode === 'Search') {
       return (
-        <Input 
-          handleInput={ this.handleInput }
-          text={ this.state.text }
-        ></Input>
-      ) 
+        <div className='Autocomplete-client__train-form-container'>
+          <TrainForm
+            handleSubmit={ this.handleTrainSubmission }
+          ></TrainForm>
+        </div>
+      );
     } else {
       return (
-        <TrainForm
-          handleSubmit={ this.handleTrainSubmission }
-        ></TrainForm>
-      )
+        <div className='Autocomplete-client__Input-container'>
+          <Input 
+            handleInput={ this.handleInput }
+            text={ this.state.text }
+          ></Input>
+        </div>
+      );
     }
   }
 
@@ -108,7 +110,6 @@ class App extends React.Component<any, AppState> {
   }
 
   handleTrainSubmission = async (passage: string) => {
-    console.log(passage);
     const body = { passage };
     await server().post('/train', body);
   }
