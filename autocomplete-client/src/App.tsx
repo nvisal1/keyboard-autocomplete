@@ -43,10 +43,14 @@ class App extends React.Component<any, AppState> {
   }
 
   handleInput = async(text: string): Promise<void> => {
-    const response = await server().get(`/candidates?text=${ text }`);
-    const candidates: Candidate[] = response.data;
-    this.setState({ candidates });
- 
+    try {
+      const response = await server().get(`/candidates?text=${ text }`);
+      const candidates: Candidate[] = response.data;
+      this.setState({ candidates });
+    } catch (error) {
+      this.setState({ candidates: [] });
+    }
+   
   }
 }
 export default App;
