@@ -19,7 +19,6 @@ export class Trie implements SearchDriver {
     }
     
     search(key: string): Candidate[] {
-        console.log('size', this._treeSize);
         const characters = key.split('');
         let currentNode = this.root;
         let matchingPrefix = '';
@@ -29,6 +28,9 @@ export class Trie implements SearchDriver {
                 matchingPrefix += characters[i];
                 currentNode = <TrieNode>currentNode.children.get(characters[i]);
             } else {
+                if (!i) {
+                    return [];
+                }
                 // The current node represents the end of the matching prefix
                 // break out of loop
                 break;

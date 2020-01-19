@@ -19,9 +19,7 @@ const SpeechBubble: React.FC<SpeechBubbleProps> = props => {
         <div className='speech-bubble'>
             <div className='speech-bubble__text-container'>
                 { renderCandidates(props.candidates) }
-                <div className='speech-bubble__pointer-container'>
-                
-                </div>
+                <div className='speech-bubble__pointer-container'></div>
             </div>
             
         </div>
