@@ -44,7 +44,9 @@ class App extends React.Component<any, AppState> {
 
   handleInput = async(text: string): Promise<void> => {
     try {
-      const response = await server().get(`/candidates?text=${ text }`);
+      const tokens = text.split(' '); 
+      const currentFragment = tokens[tokens.length - 1];
+      const response = await server().get(`/candidates?text=${ currentFragment }`);
       const candidates: Candidate[] = response.data;
       this.setState({ candidates });
     } catch (error) {
