@@ -1,11 +1,11 @@
 .speech-bubble__text-container {
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--app-white);
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     font-size: 48px;
-    color: #4A4A4A;
+    color: var(--asymmetrik-dark-grey);
 }
 
 .speech-bubble__pointer-container {
@@ -13,7 +13,7 @@
     height: 0; 
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent; 
-    border-right: 10px solid white;
+    border-right: 10px solid var(--app-white);
     position: relative;
     right: 30px;
 }
@@ -24,8 +24,8 @@
 }
 
 .speech-bubble__text-container__word:hover {
-    background-color: #BE1E2D;
-    color: white;
+    background-color: var(--asymmetrik-red);;
+    color: var(--app-white);
     border-radius: 15px;
 }
 

@@ -27,7 +27,7 @@ describe('When the Farley component is created', () => {
 function getRequiredProps(): FarleyProps {
    const handleClick = (_: string) => {}; 
 
-   const candidates: Candidate[] = [{ word: 'test_word', confidence: 1}]; 
+   const candidates: Candidate[] = [{ word: 'test_word', confidence: 1 }]; 
 
    return { handleClick, candidates };
 }

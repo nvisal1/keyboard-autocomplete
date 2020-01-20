@@ -3,8 +3,8 @@
     border-radius: 15px;
     height: 100px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    color: white;
-    background-color: #BE1E2D;
+    color: var(--app-white);
+    background-color: var(--asymmetrik-red);
     font-size: 48px;
 }
 
@@ -15,7 +15,7 @@
     width: 90%;
     height: 100%;
     box-sizing: border-box;
-    background-color: #BE1E2D;
+    background-color: var(--asymmetrik-red);
     font-size: 48px;
-    color: white;
+    color: var(--app-white);
 }

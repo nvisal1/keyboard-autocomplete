@@ -1,5 +1,5 @@
 .navbar {
-    background-color: white;
+    background-color: var(--app-white);
     height: 150px;
     padding-left: 200px;
     box-sizing: border-box;
