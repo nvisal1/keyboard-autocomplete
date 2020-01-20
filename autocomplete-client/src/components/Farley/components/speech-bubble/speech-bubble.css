@@ -28,3 +28,7 @@
     color: white;
     border-radius: 15px;
 }
+
+.speech-bubble__text-container__error-message {
+    margin: 0;
+}
