@@ -136,8 +136,11 @@ class App extends React.Component<any, AppState> {
 
   private async getCandidates(currentFragment: string): Promise<Candidate[] | undefined> {
     try {
-      const candidates = await AUTOCOMPLETE_PROVIDER.getWords(currentFragment);
-      return candidates;
+      if (currentFragment !== '') {
+        const candidates = await AUTOCOMPLETE_PROVIDER.getWords(currentFragment);
+        return candidates;
+      }
+      return [];
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
     }
