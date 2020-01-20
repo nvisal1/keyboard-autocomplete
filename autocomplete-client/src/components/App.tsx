@@ -29,7 +29,7 @@ interface AppState {
 
 const MAX_FARLEY_STEPS = window.innerWidth - 500;
 
-class App extends React.Component<any, AppState> {
+class App extends React.Component<{}, AppState> {
 
   constructor(props: any) {
     super(props)
