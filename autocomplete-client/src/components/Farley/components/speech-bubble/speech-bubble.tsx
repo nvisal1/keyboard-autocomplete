@@ -5,10 +5,10 @@ import { Candidate } from '../../../../shared/types/Candidate';
 interface SpeechBubbleProps {
     handleClick: Function;
     candidates: Candidate[];
-    errorMessage: string;
+    errorMessage?: string;
 }
 
-function renderText(errorMessage: string, candidates: Candidate[], handleClick: Function): JSX.Element | JSX.Element[] {
+function renderText(errorMessage: string | undefined, candidates: Candidate[], handleClick: Function): JSX.Element | JSX.Element[] {
     if (errorMessage) {
         return renderErrorMessage(errorMessage);
     }
@@ -28,8 +28,9 @@ function renderCandidates(candidates: Candidate[], handleClick: Function): JSX.E
     return candidates.map((candidate: Candidate) => {
         return (
             <p 
-            className='speech-bubble__text-container__word'
-            onClick={ (e) => handleClick(candidate.word) }
+                className='speech-bubble__text-container__word'
+                onClick={ (e) => handleClick(candidate.word) }
+                key={ candidate.word }
             >
                 { `${candidate.word}(${candidate.confidence})` }
             </p>

@@ -62,7 +62,7 @@ class App extends React.Component<any, AppState> {
           className='Autocomplete-client__Farley-container'
           style={ { marginLeft: this.state.farleySteps + 'px' } }>
           <Farley 
-            errorMessage={ this.state.error.isError ? this.state.error.message : '' }
+            errorMessage={ this.state.error.isError ? this.state.error.message : undefined }
             candidates={ this.state.candidates }
             handleClick={ this.handleCandidateSelection }
           ></Farley>

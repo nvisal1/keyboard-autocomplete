@@ -7,7 +7,7 @@ import { Candidate } from '../../shared/types/Candidate';
 interface FarleyProps {
     handleClick: Function;
     candidates: Candidate[];
-    errorMessage: string;
+    errorMessage?: string;
 }
 
 const Farley: React.FC<FarleyProps> = props => {
