@@ -1,14 +1,10 @@
 import React from 'react';
 import './footer.css';
 
-interface FooterProps {
-}
 
-const Footer: React.FC<FooterProps> = props => {
+const Footer: React.FC = props => {
     return (
-        <div className='footer'>
-            
-        </div>
+        <div className='footer'></div>
     );
 }
 
