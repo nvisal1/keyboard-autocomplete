@@ -13,7 +13,7 @@ describe('When the Navbar component is created', () => {
 });
 
 function getRequiredProps(): NavbarProps {
-   const handleClick = (word: string) => { return; }; 
+   const handleClick = (_: string) => {}; 
 
    const selectedOption = 'test_option';
 

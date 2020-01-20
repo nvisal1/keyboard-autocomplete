@@ -4,7 +4,7 @@ import SpeechBubble from './components/speech-bubble/speech-bubble';
 import './Farley.css';
 import { Candidate } from '../../shared/types/Candidate';
 
-interface FarleyProps {
+export interface FarleyProps {
     handleClick: Function;
     candidates: Candidate[];
     errorMessage?: string;

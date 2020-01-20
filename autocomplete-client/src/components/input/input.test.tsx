@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Input from './input';
+import Input, { InputProps } from './input';
 
 describe('When the Input component is created', () => {
     it('should render correctly', () => {
@@ -13,10 +13,8 @@ describe('When the Input component is created', () => {
     
 });
 
-function getRequiredProps(): { handleInput: Function, text: string } {
-   const handleInput = (passage: string) => {
-       console.log(passage);
-   } 
+function getRequiredProps(): InputProps {
+   const handleInput = (_: string) => {} 
 
    const text = 'test_text';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './option.css';
 
-interface OptionProps {
+export interface OptionProps {
     text: string,
     isSelected: boolean,
     handleClick: Function,

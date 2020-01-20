@@ -3,7 +3,7 @@ import './input.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-interface InputProps {
+export interface InputProps {
     handleInput: Function,
     text: string,
 }

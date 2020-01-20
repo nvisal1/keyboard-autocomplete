@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SpeechBubble from './speech-bubble';
+import SpeechBubble, { SpeechBubbleProps } from './speech-bubble';
 import { Candidate } from '../../../../shared/types/Candidate';
 
 describe('When the SpeechBubble component is created', () => {
@@ -24,12 +24,10 @@ describe('When the SpeechBubble component is created', () => {
     });
 });
 
-function getRequiredProps(): { handleClick: Function, candidates: Candidate[] } {
-   const handleClick = (word: string) => {
-       console.log(word);
-   } 
+function getRequiredProps(): SpeechBubbleProps {
+   const handleClick = (_: string) => {} 
 
-   const candidates: Candidate[] = [{ word: 'test_word', confidence: 1}]; 
+   const candidates: Candidate[] = [{ word: 'test_word', confidence: 1 }]; 
 
    return { handleClick, candidates };
 }

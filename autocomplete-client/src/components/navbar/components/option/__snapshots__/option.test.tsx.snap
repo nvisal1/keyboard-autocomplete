@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When the Option component is created and the isSelected prop is set to false should render correctly 1`] = `
+<div
+  className="option-container__text"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "#4A4A4A",
+    }
+  }
+>
+  test_option
+</div>
+`;
+
+exports[`When the Option component is created and the isSelected prop is set to true should render correctly 1`] = `
+<div
+  className="option-container__text"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "#BE1E2D",
+    }
+  }
+>
+  test_option
+</div>
+`;

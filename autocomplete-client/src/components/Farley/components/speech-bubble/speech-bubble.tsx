@@ -2,7 +2,7 @@ import React from 'react';
 import './speech-bubble.css';
 import { Candidate } from '../../../../shared/types/Candidate';
 
-interface SpeechBubbleProps {
+export interface SpeechBubbleProps {
     handleClick: Function;
     candidates: Candidate[];
     errorMessage?: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Farley from './Farley';
+import Farley, { FarleyProps } from './Farley';
 import { Candidate } from '../../shared/types/Candidate';
 
 describe('When the Farley component is created', () => {
@@ -24,10 +24,8 @@ describe('When the Farley component is created', () => {
     });
 });
 
-function getRequiredProps(): { handleClick: Function, candidates: Candidate[] } {
-   const handleClick = (word: string) => {
-       console.log(word);
-   } 
+function getRequiredProps(): FarleyProps {
+   const handleClick = (_: string) => {}; 
 
    const candidates: Candidate[] = [{ word: 'test_word', confidence: 1}]; 
 
