@@ -2,7 +2,7 @@ import React from 'react';
 import './navbar.css';
 import Option from './components/option/option';
 
-interface NavbarProps {
+export interface NavbarProps {
     options: string[];
     selectedOption: string;
     handleClick: Function;

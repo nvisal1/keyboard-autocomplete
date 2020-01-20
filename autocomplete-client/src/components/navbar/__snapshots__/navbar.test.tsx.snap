@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When the Navbar component is created should render correctly 1`] = `
+<div
+  className="navbar"
+>
+  <div
+    className="navbar__options-container"
+  >
+    <div
+      className="option-container__text"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "#BE1E2D",
+        }
+      }
+    >
+      test_option
+    </div>
+  </div>
+</div>
+`;

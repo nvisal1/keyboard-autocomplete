@@ -8,7 +8,7 @@ interface InputProps {
     text: string,
 }
 
-const Input: React.FC<InputProps> = props  => {
+const Input: React.FC<InputProps> = props => {
 
     return (
         <div className='input-container'>
