@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When the TrainForm component is created should render correctly 1`] = `
+<form
+  className="train-form"
+  onSubmit={[Function]}
+>
+  <textarea
+    className="train-form__textarea"
+    cols={30}
+    name="training-passage"
+    rows={10}
+  />
+  <button
+    className="train-form__submit-button"
+  >
+    Submit
+  </button>
+</form>
+`;

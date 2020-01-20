@@ -1,7 +1,7 @@
 import React from 'react';
 import './train-form.css';
 
-interface TrainFormProps {
+export interface TrainFormProps {
     handleSubmit: Function;
 }
 
