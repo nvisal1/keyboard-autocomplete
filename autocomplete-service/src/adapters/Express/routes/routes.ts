@@ -22,7 +22,7 @@ async function getWords(req: Request, res: Response): Promise<void> {
         const fragment = req.query.text;
 
         // return a 400 Bad Request to client if text query string is not provided
-        if (!fragment) {
+        if (!fragment && fragment !== '') {
             const badRequestError = new ResourceError(
                 'A \'text\' query string must be provided. Format: \'/candidates?text=<word fragment>\'',
                 ResourceErrorReason.BAD_REQUEST,

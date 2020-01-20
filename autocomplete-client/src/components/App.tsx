@@ -8,7 +8,13 @@ import { Candidate } from '../shared/types/Candidate';
 import TrainForm from './train-form/train-form';
 import { AUTOCOMPLETE_PROVIDER } from '../drivers';
 
-const modes = ['Search', 'Train', 'Search & Train'];
+enum Modes {
+  SEARCH = 'Search',
+  TRAIN = 'Train',
+  BOTH = 'Search & Train',
+}
+
+const modes = [ Modes.SEARCH, Modes.TRAIN, Modes.BOTH ];
 
 interface AppState {
   candidates: Candidate[];
@@ -69,8 +75,8 @@ class App extends React.Component<any, AppState> {
     );
   }
 
-  renderInput() {
-    if (this.state.mode === 'Train') {
+  renderInput(): JSX.Element {
+    if (this.state.mode === Modes.TRAIN) {
       return (
         <div className='Autocomplete-client__train-form-container'>
           <TrainForm

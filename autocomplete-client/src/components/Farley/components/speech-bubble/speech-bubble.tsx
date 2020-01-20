@@ -18,7 +18,9 @@ function renderText(errorMessage: string, candidates: Candidate[], handleClick: 
 
 function renderErrorMessage(errorMessage: string): JSX.Element {
     return (
-        <p className='speech-bubble__text-container__error-message'>{ errorMessage }</p>
+        <p className='speech-bubble__text-container__error-message'>
+            { errorMessage }
+        </p>
     );
 }
 
