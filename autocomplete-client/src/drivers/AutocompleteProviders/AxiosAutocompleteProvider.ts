@@ -2,14 +2,14 @@ import axios, { AxiosInstance, AxiosError } from 'axios';
 import { AutocompleteProvider } from '../../shared/interfaces/AutocompleteProvider';
 import { Candidate } from '../../shared/types/Candidate';
 
-enum HTTPStatus {
+export enum HTTPStatus {
     OK = 200,
     OK_NO_CONTENT = 204,
     BAD_REQUEST = 400,
     INTERNAL_SERVER_ERROR = 500,
 }
 
-enum ErrorMessages {
+export enum ErrorMessages {
     TROUBLE_CONNECTING = 'We are having trouble connecting to the autocomplete service. Please try again later.',
     SERVER_IS_DOWN = 'The autocomplete service is experiencing downtime. Please try again later.'
 }
@@ -68,6 +68,9 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
                     return new Error(ErrorMessages.SERVER_IS_DOWN);
             }
         } else {
+            if (error.message === ErrorMessages.TROUBLE_CONNECTING) {
+                return error;
+            }
             return new Error(ErrorMessages.SERVER_IS_DOWN);
         }
     }

@@ -18,7 +18,7 @@ exports[`When the App component is created should render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "color": "#BE1E2D",
+              "color": "",
             }
           }
         >
@@ -29,7 +29,7 @@ exports[`When the App component is created should render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "color": "#4A4A4A",
+              "color": "",
             }
           }
         >
@@ -40,7 +40,7 @@ exports[`When the App component is created should render correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "color": "#4A4A4A",
+              "color": "",
             }
           }
         >

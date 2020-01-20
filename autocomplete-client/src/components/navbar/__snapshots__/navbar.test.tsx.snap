@@ -12,7 +12,7 @@ exports[`When the Navbar component is created should render correctly 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "color": "#BE1E2D",
+          "color": "",
         }
       }
     >
