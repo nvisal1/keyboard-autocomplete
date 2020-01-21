@@ -6,7 +6,7 @@ import Input from './input/input';
 import { Candidate } from '../shared/types/Candidate';
 import TrainForm from './train-form/train-form';
 import { AUTOCOMPLETE_PROVIDER } from '../drivers';
-import SpeechBubble from './Farley/components/speech-bubble/speech-bubble';
+import SpeechBubble from './speech-bubble/speech-bubble';
 
 enum Modes {
   SEARCH = 'Search',

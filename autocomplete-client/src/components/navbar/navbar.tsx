@@ -30,7 +30,6 @@ const Navbar: React.FC<NavbarProps> = props => {
                     { renderOptions(options, selectedOption, handleClick)}
                 </div>
             </div>
-            
         </div>
     );
 }

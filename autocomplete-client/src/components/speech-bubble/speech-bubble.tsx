@@ -1,7 +1,7 @@
 import React from 'react';
 import './speech-bubble.css';
-import { Candidate } from '../../../../shared/types/Candidate';
-import Farley from '../../Farley';
+import { Candidate } from '../../shared/types/Candidate';
+import Farley from './components/Farley/Farley';
 
 export interface SpeechBubbleProps {
     handleClick: Function;

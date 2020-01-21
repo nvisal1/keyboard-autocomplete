@@ -9,7 +9,6 @@ export interface InputProps {
 }
 
 const Input: React.FC<InputProps> = props => {
-
     return (
         <div className='input-container'>
             <span className='input__icon-container'>
