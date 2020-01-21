@@ -14,7 +14,9 @@
 }
 
 .Autocomplete-client__Input-container {
-  width: 80%;
+  max-width: 1440px;
+  padding-left: 40px;
+  padding-right: 40px;
   height: 30%;
   margin: auto;
   position: absolute;
@@ -22,7 +24,9 @@
 }
 
 .Autocomplete-client__train-form-container {
-  width: 80%;
+  max-width: 1440px;
+  padding-left: 40px;
+  padding-right: 40px;
   height: 50%;
   margin: auto;
   position: absolute;

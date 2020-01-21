@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = props => {
 
     return (
         <div className='input-container'>
-            <span className='input__icon-cntainer'>
+            <span className='input__icon-container'>
                 <FontAwesomeIcon icon={ faSearch } />
             </span>
             <input 
