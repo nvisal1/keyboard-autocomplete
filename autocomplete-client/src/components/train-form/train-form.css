@@ -18,9 +18,11 @@
     box-sizing: border-box;
     padding: 20px;
     outline: none;
+    font-family: 'Arial';
 }
 
 .train-form__submit-button {
+    cursor: pointer;
     border: none;
     outline: none;
     border-radius: 15px;
@@ -31,3 +33,15 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+@media only screen and (max-width: 786px) {
+    .train-form__textarea  {
+        height: 200px;
+        font-size: 18px;
+    }
+
+    .train-form__submit-button {
+        height: 50px;
+        width: 150px;
+        font-size: 18px;
+    }
+}

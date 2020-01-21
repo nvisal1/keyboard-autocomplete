@@ -117,7 +117,9 @@ class App extends React.Component<{}, AppState> {
 
   handleTrainSubmission = (passage: string): void => {
     try {
-      AUTOCOMPLETE_PROVIDER.train(passage);
+      if (passage) {
+        AUTOCOMPLETE_PROVIDER.train(passage);
+      }
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
     }

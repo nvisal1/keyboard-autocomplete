@@ -33,3 +33,18 @@
     margin: 0;
     font-size: 36px;
 }
+
+@media only screen and (max-width: 786px) {
+    .speech-bubble__text-container {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .speech-bubble__pointer-container {
+        right: 15px;
+    }
+
+    .speech-bubble__text-container__error-message {
+        font-size: 14px;
+    }
+}
