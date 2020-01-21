@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import Farley from './Farley';
-import { Candidate } from '../../../../shared/types/Candidate';
 
 describe('When the Farley component is created', () => {
     describe('and the errorMessage prop is set to null', () => {

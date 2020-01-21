@@ -1,0 +1,22 @@
+version: '3.7'
+
+# This file is intended to be used as an override file
+# for creating the development environment
+
+services:
+    
+    autocomplete-client:
+        image: nvisal1/autocomplete-client
+        ports: 
+            - "80:80"
+        restart: on-failure
+    
+    autocomplete-service:
+        image: nvisal1/autocomplete-service
+        ports:
+            - "5000:5000"
+        restart: on-failure
+    
+volumes:
+     notused:
+              
