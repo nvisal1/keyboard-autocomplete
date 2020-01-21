@@ -3,10 +3,6 @@
 The Autocomplete Client provides a user interface for communicating with the Autocomplete service. 
 
 
-## Architecture
-
-
-
 ## Tests
 
 The Autocomplete Client includes unit tests and snapshot tests. All of these tests
