@@ -2,12 +2,6 @@
     height: 200px;
 }
 
-.farley__speech-bubble-container {
-    position: absolute;
-    bottom: 90px;
-    left: 170px;
-}
-
 @media only screen and (max-width: 786px) {
     .farley__image-container {
         height: 150px;
@@ -17,5 +11,6 @@
         position: absolute;
         bottom: 65px;
         left: 130px;
+
     }
 }

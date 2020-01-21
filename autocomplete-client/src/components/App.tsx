@@ -3,10 +3,10 @@ import './App.css';
 import Navbar from './navbar/navbar';
 import Footer from './footer/footer';
 import Input from './input/input';
-import Farley from './Farley/Farley';
 import { Candidate } from '../shared/types/Candidate';
 import TrainForm from './train-form/train-form';
 import { AUTOCOMPLETE_PROVIDER } from '../drivers';
+import SpeechBubble from './Farley/components/speech-bubble/speech-bubble';
 
 enum Modes {
   SEARCH = 'Search',
@@ -28,6 +28,7 @@ interface AppState {
 }
 
 const MAX_FARLEY_STEPS = window.innerWidth - 500;
+const MIN_FARLEY_STEPS = 40;
 
 class App extends React.Component<{}, AppState> {
 
@@ -35,7 +36,7 @@ class App extends React.Component<{}, AppState> {
     super(props)
     this.state = {
         candidates: [],
-        farleySteps: 0,
+        farleySteps: 40,
         text: '',
         mode: 'Search',
         error: {
@@ -60,12 +61,12 @@ class App extends React.Component<{}, AppState> {
 
         <div 
           className='Autocomplete-client__Farley-container'
-          style={ { marginLeft: this.state.farleySteps + 'px' } }>
-          <Farley 
+          style={ { paddingLeft: this.state.farleySteps + 'px' } }>
+          <SpeechBubble
             errorMessage={ this.state.error.isError ? this.state.error.message : undefined }
             candidates={ this.state.candidates }
             handleClick={ this.handleCandidateSelection }
-          ></Farley>
+          ></SpeechBubble>
         </div>
 
         <div className='Autocomplete-client__Footer-container'>
@@ -151,8 +152,12 @@ class App extends React.Component<{}, AppState> {
   private calculateFarleySteps(text: string) {
     const newFarleyStep = text.length * 15;
 
-    if (MAX_FARLEY_STEPS > newFarleyStep) {
+    if (MAX_FARLEY_STEPS >= newFarleyStep && MIN_FARLEY_STEPS <= newFarleyStep) {
       return newFarleyStep;
+    }
+
+    if (MIN_FARLEY_STEPS > newFarleyStep) {
+      return MIN_FARLEY_STEPS;
     }
 
     return this.state.farleySteps

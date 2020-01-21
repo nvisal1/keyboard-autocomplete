@@ -14,19 +14,19 @@
 }
 
 .Autocomplete-client__Input-container {
-  max-width: 1440px;
-  padding-left: 40px;
-  padding-right: 40px;
-  height: 30%;
+  max-width: var(--app-max-width);
   margin: auto;
+  padding: var(--app-padding);
+  height: 30%;
+  margin-top: auto;
+  margin-bottom: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .Autocomplete-client__train-form-container {
-  max-width: 1440px;
-  padding-left: 40px;
-  padding-right: 40px;
+  max-width: var(--app-max-width);
+  padding: var(--app-padding);
   height: 50%;
   margin: auto;
   position: absolute;
@@ -34,8 +34,13 @@
 }
 
 .Autocomplete-client__Farley-container {
+  max-width: var(--app-max-width);
+  padding: var(--app-padding);
+  margin: auto;
   position: absolute;
-  bottom: 70px;
+  right: 0;
+  left: 0;
+  bottom: 30px;
 }
 
 .Autocomplete-client__Footer-container {

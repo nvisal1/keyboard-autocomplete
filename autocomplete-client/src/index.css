@@ -1,8 +1,13 @@
 :root {
+  /* Colors */
   --asymmetrik-red: #BE1E2D;
   --asymmetrik-light-grey: #6C6C6C;
   --asymmetrik-dark-grey: #4A4A4A;
   --app-white: white;
+
+  /* Alignment */
+  --app-padding: 40px;
+  --app-max-width: 1440px;
 }
 
 body {

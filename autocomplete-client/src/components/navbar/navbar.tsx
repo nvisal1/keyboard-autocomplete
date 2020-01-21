@@ -25,9 +25,12 @@ const Navbar: React.FC<NavbarProps> = props => {
     const { options, selectedOption, handleClick } = props;
     return (
         <div className='navbar'>
-            <div className='navbar__options-container'>
-                { renderOptions(options, selectedOption, handleClick)}
+            <div className='navbar__alignment-container'>
+                <div className='navbar__alignment-container__options-container'>
+                    { renderOptions(options, selectedOption, handleClick)}
+                </div>
             </div>
+            
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './speech-bubble.css';
 import { Candidate } from '../../../../shared/types/Candidate';
+import Farley from '../../Farley';
 
 export interface SpeechBubbleProps {
     handleClick: Function;
@@ -8,7 +9,7 @@ export interface SpeechBubbleProps {
     errorMessage?: string;
 }
 
-function renderText(errorMessage: string | undefined, candidates: Candidate[], handleClick: Function): JSX.Element | JSX.Element[] {
+function renderText(candidates: Candidate[], handleClick: Function, errorMessage?: string): JSX.Element | JSX.Element[] {
     if (errorMessage) {
         return renderErrorMessage(errorMessage);
     }
@@ -42,11 +43,13 @@ const SpeechBubble: React.FC<SpeechBubbleProps> = props => {
     const { candidates, handleClick, errorMessage } = props;
     return (
         <div className='speech-bubble'>
+            <div className='speech-bubble__Farley-container'>
+                <Farley></Farley>
+            </div>
             <div className='speech-bubble__text-container'>
-                { renderText(errorMessage, candidates, handleClick) }
+                { renderText(candidates, handleClick, errorMessage) }
                 <div className='speech-bubble__pointer-container'></div>
             </div>
-            
         </div>
     );
 }

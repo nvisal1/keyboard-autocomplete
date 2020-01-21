@@ -1,10 +1,21 @@
+.speech-bubble {
+    max-width: 200px;
+}
+
+.speech-bubble__Farley-container {
+    position: relative;
+    left: -180px;
+}
+
 .speech-bubble__text-container {
+    position: absolute;
+    bottom: 50%;
     border-radius: 15px;
     background-color: var(--app-white);
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    font-size: 48px;
+    font-size: 36px;
     color: var(--asymmetrik-dark-grey);
 }
 
@@ -46,5 +57,10 @@
 
     .speech-bubble__text-container__error-message {
         font-size: 14px;
+    }
+
+    .speech-bubble__Farley-container {
+        position: relative;
+        left: -130px;
     }
 }

@@ -1,28 +1,32 @@
 .navbar {
     background-color: var(--app-white);
-    height: 150px;
-    padding-left: 40px;
-    box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-sizing: border-box;
+    height: 150px;
+    padding: var(--app-padding);
 }
 
-.navbar__options-container {
-    display: grid;
-    grid-template-columns: 150px 200px 250px;
+.navbar__alignment-container {
+    margin: auto;
+    max-width: var(--app-max-width);;
     height: 100%;
+}
+
+.navbar__alignment-container__options-container {
     align-items: center;
-    justify-items: center;
+    display: grid;
+    grid-template-columns: 150px 120px 250px;
+    height: 100%;
+    justify-items: left;
 }
 
 @media only screen and (max-width: 760px) {
     .navbar {
         height: 100px;
-        padding-left: 40px;
-        padding-right: 40px;
     }
 
-    .navbar__options-container {
-        grid-template-columns: 100px 100px 180px;
+    .navbar__alignment-container__options-container {
+        grid-template-columns: 100px 100px 100px;
     }
 }
 
@@ -31,7 +35,7 @@
         height: 100px;
     }
 
-    .navbar__options-container {
-        grid-template-columns: 75px 75px 120px;
+    .navbar__alignment-container__options-container {
+        grid-template-columns: 75px 75px 75px;
     }
 }
