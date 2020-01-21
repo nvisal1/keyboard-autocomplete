@@ -11,40 +11,44 @@ exports[`When the App component is created should render correctly 1`] = `
       className="navbar"
     >
       <div
-        className="navbar__options-container"
+        className="navbar__alignment-container"
       >
         <div
-          className="option-container__text"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "",
-            }
-          }
+          className="navbar__alignment-container__options-container"
         >
-          Search
-        </div>
-        <div
-          className="option-container__text"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "",
+          <div
+            className="option-container__text"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
             }
-          }
-        >
-          Train
-        </div>
-        <div
-          className="option-container__text"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "",
+          >
+            Search
+          </div>
+          <div
+            className="option-container__text"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
             }
-          }
-        >
-          Search & Train
+          >
+            Train
+          </div>
+          <div
+            className="option-container__text"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            Search & Train
+          </div>
         </div>
       </div>
     </div>
@@ -56,7 +60,7 @@ exports[`When the App component is created should render correctly 1`] = `
       className="input-container"
     >
       <span
-        className="input__icon-cntainer"
+        className="input__icon-container"
       >
         <svg
           aria-hidden="true"
@@ -87,32 +91,28 @@ exports[`When the App component is created should render correctly 1`] = `
     className="Autocomplete-client__Farley-container"
     style={
       Object {
-        "marginLeft": "0px",
+        "paddingLeft": "40px",
       }
     }
   >
     <div
-      className="farley"
+      className="speech-bubble"
     >
-      <img
-        alt="Farley"
-        className="farley__image-container"
-        src="Farley.png"
-      />
       <div
-        className="farley__speech-bubble-container"
+        className="speech-bubble__Farley-container"
+      >
+        <img
+          alt="Farley"
+          className="farley__image-container"
+          src="Farley.png"
+        />
+      </div>
+      <div
+        className="speech-bubble__text-container"
       >
         <div
-          className="speech-bubble"
-        >
-          <div
-            className="speech-bubble__text-container"
-          >
-            <div
-              className="speech-bubble__pointer-container"
-            />
-          </div>
-        </div>
+          className="speech-bubble__pointer-container"
+        />
       </div>
     </div>
   </div>

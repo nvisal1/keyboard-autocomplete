@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When the Farley component is created and the errorMessage prop is set to null should render correctly 1`] = `
+<img
+  alt="Farley"
+  className="farley__image-container"
+  src="Farley.png"
+/>
+`;

@@ -5,18 +5,22 @@ exports[`When the Navbar component is created should render correctly 1`] = `
   className="navbar"
 >
   <div
-    className="navbar__options-container"
+    className="navbar__alignment-container"
   >
     <div
-      className="option-container__text"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "",
-        }
-      }
+      className="navbar__alignment-container__options-container"
     >
-      test_option
+      <div
+        className="option-container__text"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "",
+          }
+        }
+      >
+        test_option
+      </div>
     </div>
   </div>
 </div>

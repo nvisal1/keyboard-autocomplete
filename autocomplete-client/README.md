@@ -1,6 +1,6 @@
 # Autocomplete Client
 
-The Autocomplete Client provides a user interface for communicating with the Autocomplete service. 
+The Autocomplete Client provides a user interface for communicating with the Autocomplete Service. 
 
 
 ## Tests

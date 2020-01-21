@@ -5,7 +5,7 @@ exports[`When the Input component is created should render correctly 1`] = `
   className="input-container"
 >
   <span
-    className="input__icon-cntainer"
+    className="input__icon-container"
   >
     <svg
       aria-hidden="true"
