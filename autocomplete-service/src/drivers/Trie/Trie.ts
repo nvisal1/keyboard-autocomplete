@@ -31,6 +31,7 @@ export class Trie implements SearchDriver {
         const subTreeRoot = this.getSubtreeRoot(characters);
 
         const expectedSubTreeRootLevel = characters.length - 1;
+        
         if (subTreeRoot.level !== expectedSubTreeRootLevel) {
             return [];
         }
@@ -58,6 +59,8 @@ export class Trie implements SearchDriver {
 
         this.createNewPath(subtreeRoot, characters);
     }
+
+
 
     private getSubtreeRoot(characters: string[]): SubtreeRoot  {
         let currentNode = this.root;
@@ -109,24 +112,26 @@ export class Trie implements SearchDriver {
     }
 
 
-    private getMatches(matchingPrefix: string, currentNode: TrieNode, allWords: string[] = [], maxStringLength = 0): string[] {
+    private getMatches(matchingPrefix: string, currentNode: TrieNode, matches: string[] = [], maxStringLength = 0): string[] {
         const keys =[ ...currentNode.children.keys() ];
         for (let index in keys) {
             const child = <TrieNode>currentNode.children.get(keys[index]);
             var newString = matchingPrefix + keys[index];
-            if (allWords.length === 5 && newString.length >= maxStringLength) {
+
+            if (matches.length === 5 && newString.length >= maxStringLength) {
                 break;
             }
+
             if (child.isEnd) {
                 if (maxStringLength < newString.length) {
                     maxStringLength = newString.length;
                 }
-                allWords.push(newString);
+                matches.push(newString);
             }
             
-            allWords = this.getMatches(newString, child, allWords, maxStringLength);
+            matches = this.getMatches(newString, child, matches, maxStringLength);
         }
 
-        return allWords
+        return matches;
     };
 }

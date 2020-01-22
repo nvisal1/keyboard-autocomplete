@@ -40,7 +40,7 @@ async function getWords(req: Request, res: Response): Promise<void> {
 
             handleError(badRequestError, res);
         } else {
-            const candidates = await autocompleteProvider.getWords(fragment);
+            const candidates = autocompleteProvider.getWords(fragment);
 
             let response: HTTPCandidate[] = [];
             candidates.forEach((candidate: Candidate) => {
