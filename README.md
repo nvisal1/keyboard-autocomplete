@@ -58,7 +58,21 @@ The following command will use the `docker-compose.yml` file at the root. This s
 $ docker-compose up
 ```
 
-### README References
+## Training The Algorithm
+
+Although the Autocomplete Client provides a form for training the algorithm, I have included a script to insert a list of common stop words into the algorithm. Running this script is completely optional, but may provide a better user experience. 
+
+NOTE: The Autocomplete Service must be running in order for this script to work.
+
+The script can be run with the following command
+```
+$ cd autocomplete-training
+$ npm i
+$ node train.js
+```
+
+
+## README References
 
 The main README location for each project is listed here
 

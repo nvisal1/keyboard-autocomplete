@@ -5,7 +5,6 @@ englishStopWords = englishStopWords.join(' ');
 
 const instance = axios.create({ baseURL: 'http://localhost:5000' });
  
-
 instance.post('/train', {
     passage: englishStopWords,
   })
