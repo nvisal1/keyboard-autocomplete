@@ -2,6 +2,11 @@ import { SearchDriver } from '../../shared/interfaces';
 import { TrieNode } from './TrieNode';
 import { Candidate } from '../../shared/types/Candidate';
 
+type SubtreeRoot = {
+    level: number,
+    node: TrieNode,
+}
+
 export class Trie implements SearchDriver {
 
     private root: TrieNode;
@@ -18,31 +23,23 @@ export class Trie implements SearchDriver {
         return this._treeSize;
     }
     
-    search(key: string): Candidate[] {
-        const characters = key.split('');
-        let currentNode = this.root;
-        let matchingPrefix = '';
+    search(query: string): Candidate[] {
+        query = query.toLowerCase();
 
-        for (let i = 0; i < characters.length; i++) {
-            if(currentNode.children.has(characters[i])) {
-                matchingPrefix += characters[i];
-                currentNode = <TrieNode>currentNode.children.get(characters[i]);
-            } else {
-                if (!i) {
-                    return [];
-                }
-                // The current node represents the end of the matching prefix
-                // break out of loop
-                break;
-            }
+        const characters = this.tokenizeInput(query);
+      
+        const subTreeRoot = this.getSubtreeRoot(characters);
+
+        const expectedSubTreeRootLevel = characters.length - 1;
+        if (subTreeRoot.level !== expectedSubTreeRootLevel) {
+            return [];
         }
 
-        const matches = this.getMatches(matchingPrefix, currentNode);
+        const matches = this.getMatches(query, subTreeRoot.node);
 
-        const candidates = matches.map((match: string) => new Candidate(match, match.length - matchingPrefix.length));
-
+        const candidates = this.mapMatchesToCandidates(query, matches);
+        
         return candidates;
-
     }
 
     /*
@@ -53,21 +50,60 @@ export class Trie implements SearchDriver {
         3. Set the last node as a word marker
     */
     insert(key: string): void {
-        const characters = key.split('');
+        key = key.toLowerCase();
+    
+        const characters = this.tokenizeInput(key);
+
+        const subtreeRoot = this.getSubtreeRoot(characters);
+
+        this.createNewPath(subtreeRoot, characters);
+    }
+
+    private getSubtreeRoot(characters: string[]): SubtreeRoot  {
         let currentNode = this.root;
 
-        characters.forEach((character: string, index: number) => {
-            if (currentNode.children.has(character)) {
-                currentNode = <TrieNode>currentNode.children.get(character);
+        for (let i = 0; i < characters.length; i++) {
+            if (currentNode.children.has(characters[i])) {
+                currentNode = <TrieNode>currentNode.children.get(characters[i]);
+            } else {
+                return { level: i - 1, node: currentNode };
+            }
+        }
+
+        const level = characters.length - 1;
+        return { level , node: currentNode };
+    }
+
+    private tokenizeInput(key: string): string[] {
+        const characters = key.split('');
+        return characters;
+    }
+
+    private mapMatchesToCandidates(query: string, matches: string[]): Candidate[] {
+        const candidates = matches.map((match: string) => {
+            const confidence = match.length - query.length;
+            return new Candidate(match, confidence);
+        });
+
+        return candidates;
+    }
+
+    private createNewPath(subtreeRoot: SubtreeRoot, characters: string[]): void {
+        let currentNode = subtreeRoot.node;
+        const nextLevel = subtreeRoot.level + 1;
+
+        for (let i = nextLevel; i < characters.length; i++) {
+            if (currentNode.children.has(characters[i])) {
+                currentNode = <TrieNode>currentNode.children.get(characters[i]);
             } else {
                 // Set new node as a child of the current node and switch
                 // current node to newly created node.
-                currentNode.children.set(character, new TrieNode());
+                currentNode.children.set(characters[i], new TrieNode());
                 this._treeSize += 1;
 
-                currentNode  = <TrieNode>currentNode.children.get(character);
+                currentNode = <TrieNode>currentNode.children.get(characters[i]);
             }
-        });
+        }    
 
         currentNode.isEnd = true;
     }

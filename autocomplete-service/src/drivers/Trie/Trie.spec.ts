@@ -1,4 +1,5 @@
 import { Trie } from './Trie';
+import { Candidate } from '../../shared/types/Candidate';
 
 describe('When a new Trie is created', () => {
     describe('and the insert method is called', () => {
@@ -69,26 +70,60 @@ describe('When a new Trie is created', () => {
                 });
 
                 const query = 'te';
-                const expectedResult = ['tea', 'test', 'tech'];
+
+                const expectedWords = ['tea', 'test', 'tech'];
+
+                let expectedCandidates = expectedWords.map((word: string) => {
+                    return new Candidate(word, word.length - query.length);
+                });
+                
                 const candidates = trie.search(query);
 
-                expect(candidates.sort()).toEqual(expectedResult.sort());
+                expect(new Set(candidates)).toEqual(new Set(expectedCandidates));
             });
         });
         describe('and the tree contains more than 5 words with a matching prefix', () => {
             it('should return an array with the 5 shortest words that have a matching prefix', () => {
                 const trie = new Trie();
-                const words = ['tea', 'test', 'tech', 'teach', 'teacher', 'television', 'unrelated'];
+                const words = ['t', 'tea', 'test', 'tech', 'teach', 'teacher', 'television', 'unrelated'];
 
                 words.forEach((word: string) => {
                     trie.insert(word);
                 });
 
                 const query = 'te';
-                const expectedResult = ['tea', 'test', 'tech', 'teach', 'teacher'];
+
+                const expectedWords = ['tea', 'test', 'tech', 'teach', 'teacher'];
+
+                let expectedCandidates = expectedWords.map((word: string) => {
+                    return new Candidate(word, word.length - query.length);
+                });
+
                 const candidates = trie.search(query);
 
-                expect(candidates.sort()).toEqual(expectedResult.sort());
+                expect(new Set(candidates)).toEqual(new Set(expectedCandidates));
+            });
+        });
+        describe('and the query contains capital letters', () => {
+            it('should convert query to lowercase and match the same words', () => {
+                const trie = new Trie();
+                const words = ['t', 'TEA', 'test', 'tech', 'teach', 'teacher', 'television', 'unrelated'];
+
+                words.forEach((word: string) => {
+                    trie.insert(word);
+                });
+
+                const query = 'TE';
+
+                const expectedWords = ['tea', 'test', 'tech', 'teach', 'teacher'];
+
+                let expectedCandidates = expectedWords.map((word: string) => {
+                    return new Candidate(word, word.length - query.length);
+                });
+
+                const candidates = trie.search(query);
+
+                expect(new Set(candidates)).toEqual(new Set(expectedCandidates));
             });
         });
     });

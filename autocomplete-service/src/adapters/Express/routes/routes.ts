@@ -12,9 +12,19 @@ const autocompleteProvider = new Autocomplete();
 
 export function buildAdapter() {
     const router = Router();
+    router.get('/', index);
     router.get('/candidates', getWords);
     router.post('/train', train);
     return router;
+}
+
+async function index(req: Request, res: Response): Promise<void> {
+    try {
+        const response = { message: 'Welcome to the Autocomplete Service' };
+        res.status(200).json(response);
+    } catch (error) {
+        handleError(error, res);
+    }
 }
 
 async function getWords(req: Request, res: Response): Promise<void> {
@@ -49,7 +59,7 @@ async function train(req: Request, res: Response): Promise<void> {
         const passage = req.body.passage;
 
         // return a 400 Bad Request to client if passage property is not provided in request body
-        if (!passage) {
+        if (!passage && passage !== '') {
             const badRequestError = new ResourceError(
                 'A \'passage\' property must be provided in the request body. Format: \'body\': { \'passage\': \'<words>\' }',
                 ResourceErrorReason.BAD_REQUEST,
