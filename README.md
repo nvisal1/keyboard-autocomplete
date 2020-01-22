@@ -15,16 +15,7 @@ This project includes the Autocomplete Client and the Autocomplete Service. The 
 Unit tests are included for both the Autocomplete Client and Autocomplete Service. 
 
 In order to run the tests for an individual project, please follow the instructions in that project's main README. Please refer to the `README References` section at the bottom of this README.
-```
-$ docker-compose -f ./docker-compose-overrides/docker-compose.test.yml up
-```
 
-After the tests are finished running, you can clean up the environment by running the following commands.
-
-```
-$ docker-compose down
-$ docker-compose rm
-```
 
 ## Running In Development
 

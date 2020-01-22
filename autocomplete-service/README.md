@@ -51,7 +51,7 @@ The autocomplete algorithm uses a trie data structure. The class exposes two met
 ### Algorithm Steps
 
 #### Insert
-Worst Case: O(M) where M is the length of the given key
+
 - Convert key to lowercase
 - Tokenize the key (convert the key into an array of individual letters)
 - Find the subtree root. This is done by iterating over the tokenized characters to find the last matching node in the tree. For example, if the tree contains the word `three` and the key is `throw`, the subtree root will be `r`. This ensures that the same word is not entered more than once.
@@ -66,7 +66,7 @@ Worst Case: O(M) where M is the length of the given key
 - Map matches to `Candidates`. 
 
 #### Calculating Confidence
-Every `Candidate` includes a confidence value. This indicates the likelihood of the `Candidate` being the correct option. The confidence is calculated by subtracting the `Candidate` word length by the search query length. For example, if the `Candidate` word is tea and the search query is te, the confidence will be 1. Lower confidence values indicate a higher probability of correctness.
+Every `Candidate` includes a confidence value. This indicates the likelihood of the `Candidate` being the correct option. The confidence is calculated by subtracting the `Candidate` word length by the search query length. For example, if the `Candidate` word is `tea` and the search query is `te`, the confidence will be 1. Lower confidence values indicate a higher probability of correctness.
 
 ## Running In Development
 

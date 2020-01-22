@@ -32,5 +32,6 @@ $ docker run nvisal1/autocomplete-client
 ### React Scripts
 
 ```
-npm start
+$ npm i
+$ npm start
 ```
