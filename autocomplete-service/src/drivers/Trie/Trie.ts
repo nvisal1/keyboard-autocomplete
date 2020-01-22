@@ -60,8 +60,6 @@ export class Trie implements SearchDriver {
         this.createNewPath(subtreeRoot, characters);
     }
 
-
-
     private getSubtreeRoot(characters: string[]): SubtreeRoot  {
         let currentNode = this.root;
 

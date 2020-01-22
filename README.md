@@ -15,11 +15,6 @@ This project includes the Autocomplete Client and the Autocomplete Service. The 
 Unit tests are included for both the Autocomplete Client and Autocomplete Service. 
 
 In order to run the tests for an individual project, please follow the instructions in that project's main README. Please refer to the `README References` section at the bottom of this README.
-
-If you wish to run all of the tests across both projects, I have included a `docker-compose.test.yml` script. The script builds both images, overriding the command with `npm test`. 
-
-Follow the commands below to run the `docker-compose.test.yml` script.
-
 ```
 $ docker-compose -f ./docker-compose-overrides/docker-compose.test.yml up
 ```
