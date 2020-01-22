@@ -1,0 +1,13 @@
+{
+  "name": "autocomplete-training",
+  "version": "1.0.0",
+  "description": "This project includes a script for training the autocomplete algorithm",
+  "main": "train.js",
+  "scripts": {},
+  "author": "Nick Visalli",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "stopwords": "0.0.9"
+  }
+}
