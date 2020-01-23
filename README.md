@@ -20,7 +20,7 @@ In order to run the tests for an individual project, please follow the instructi
 ## Running In Development
 
 Each project can be built individually by following the instructions in the project's main README.
-If you do not want to use Docker, those README files will explain how to build each project with npm. Please refer to the `README References` section at the bottom of this README. 
+If you do not want to use Docker, the README files that are listed in the `README References` section will explain how to build each project with npm.
 
 This section will explain how to run both projects with Docker. 
 
@@ -50,7 +50,7 @@ Although the Autocomplete Client provides a form for training the algorithm, I h
 
 NOTE: The Autocomplete Service must be running in order for this script to work.
 
-The script can be run with the following command
+The script can be ran with the following command
 ```
 $ cd autocomplete-training
 $ npm i
