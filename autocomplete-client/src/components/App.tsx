@@ -250,7 +250,7 @@ class App extends React.Component<{}, AppState> {
    */
   private async train(passage: string): Promise<void> {
     try {
-      AUTOCOMPLETE_PROVIDER.train(passage);
+      await AUTOCOMPLETE_PROVIDER.train(passage);
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
     }
