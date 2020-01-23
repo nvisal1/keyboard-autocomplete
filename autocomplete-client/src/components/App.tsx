@@ -29,9 +29,6 @@ interface AppState {
   }
 }
 
-const MAX_FARLEY_STEPS = window.innerWidth - 500;
-const MIN_FARLEY_STEPS = 40;
-
 class App extends React.Component<{}, AppState> {
 
   state = {

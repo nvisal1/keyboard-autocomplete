@@ -22,6 +22,13 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
         this.axios = axios.create({ baseURL: 'http://localhost:5000' });
     }
 
+    /**
+     * getWords makes a request to the Autocomplete Service to get
+     * a list of Candidates for a given word fragment.
+     * The Autocomplete Service is expected to return a status
+     * of 200. This function will throw an errorif any other status 
+     * code is returned.
+     */
     async getWords(fragment: string): Promise<Candidate[]> {
         try {
             const response = await this.axios.get(`/candidates?text=${ fragment }`);
@@ -39,6 +46,13 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
         }
     }
     
+    /**
+     * train makes a request to the Autocomplete Service to train
+     * the autocomplete algorithm with a given passage.
+     * The Autocomplete Sevice is expected to return a status
+     * of 204. This function will throw an error if any other
+     * status code is returned.
+     */
     async train(passage: string): Promise<void> {
         try {
             const body = { passage };
@@ -55,6 +69,10 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
     
     }
 
+    /**
+     * mapHttpError accepts an error and uses it to determine which
+     * client error to throw.
+     */
     private mapHttpError(error: AxiosError): Error {
         if (error.response) {
             switch (error.response.status) {
