@@ -20,7 +20,7 @@ In order to run the tests for an individual project, please follow the instructi
 ## Running In Development
 
 Each project can be built individually by following the instructions in the project's main README.
-If you are unfamiliar with Docker or do not have it installed, these sections will explain how to build each project with npm. Please refer to the `README References` section at the bottom of this README. 
+If you do not want to use Docker, those sections will explain how to build each project with npm. Please refer to the `README References` section at the bottom of this README. 
 
 This section will explain how to run both projects. 
 
