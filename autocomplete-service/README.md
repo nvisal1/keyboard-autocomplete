@@ -46,7 +46,7 @@ All tests will run with `npm test`.
 
 The implementation of the algorithm can be found at `/src/drivers/Trie/Trie.ts`
 
-The autocomplete algorithm uses a trie data structure. The class exposes two methods, search and insert. The trie data structure allows for fast insert and lookup operations. The lookup operation for this algorithm is more complicated because it involves discovering the 5 most relevant matches. I used depth-first search to solve this problem. 
+The autocomplete algorithm uses a trie data structure. The class exposes two methods: search and insert. The trie data structure allows for fast insert and lookup operations. The lookup operation for this algorithm is more complicated because it involves discovering the five most relevant matches. I used depth-first search to solve this problem. 
 
 ### Algorithm Steps
 
@@ -61,8 +61,8 @@ The autocomplete algorithm uses a trie data structure. The class exposes two met
 - Convert query to lowercase
 - Tokenize the query (convert the key into an array of individual letters)
 - Find the subtree root. This is done by iterating over the tokenized characters to find the last matching node in the tree. For example, if the tree contains the word `three` and the key is `throw`, the subtree root will be `r`.
-- If the level of the discovered root node is less than the length of the query, return and empty array. This indicates that the given word fragment does not exist in the tree.
-- Find matches in the tree. This is done by performing depth-first search from the discovered subtree root. In order to speed up this process, after the algorithm discovers 5 words, it will skip paths that have more characters than the longest discovered word. 
+- If the level of the discovered root node is less than the length of the query, return an empty array. This indicates that the given word fragment does not exist in the tree.
+- Find matches in the tree. This is done by performing depth-first search from the discovered subtree root. In order to speed up this process, after the algorithm discovers five words, it will skip paths that have more characters than the longest discovered word. 
 - Map matches to `Candidates`. 
 
 #### Calculating Confidence
