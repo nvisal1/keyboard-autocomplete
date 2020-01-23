@@ -76,7 +76,7 @@ async function getWords(req: Request, res: Response): Promise<void> {
  * autocomplete algorithm ('/train'). This function expects
  * the presence of a passage property in the request body. If
  * it is not provided, the function will respond with a status
- * 400. Othrewise, the function will pass the given text passage
+ * 400. Otherwise, the function will pass the given text passage
  * to the Autocomplete Provider for training and respond with a
  * status of 204.
  */
