@@ -1,18 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import TrainForm, { TrainFormProps } from './train-form';
+import TrainingForm, { TrainingFormProps } from './training-form';
 
-describe('When the TrainForm component is created', () => {
+describe('When the TrainingForm component is created', () => {
     it('should render correctly', () => {
         const requiredProps = getRequiredProps();
-        const currentSnapshot = renderer.create(<TrainForm { ...requiredProps }></TrainForm>).toJSON();
+        const currentSnapshot = renderer.create(<TrainingForm { ...requiredProps }></TrainingForm>).toJSON();
 
         expect(currentSnapshot).toMatchSnapshot();
     });
 });
 
-function getRequiredProps(): TrainFormProps {
+function getRequiredProps(): TrainingFormProps {
    const handleSubmit = (_: string) => {}; 
 
    return { handleSubmit };

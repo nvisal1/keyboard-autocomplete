@@ -4,7 +4,7 @@ import Navbar from './navbar/navbar';
 import Footer from './footer/footer';
 import Input from './input/input';
 import { Candidate } from '../shared/types/Candidate';
-import TrainForm from './train-form/train-form';
+import TrainingForm from './training-form/training-form';
 import { AUTOCOMPLETE_PROVIDER } from '../drivers';
 import SpeechBubble from './speech-bubble/speech-bubble';
 
@@ -19,7 +19,8 @@ const modes = [ Modes.SEARCH, Modes.TRAIN, Modes.BOTH ];
 interface AppState {
   candidates: Candidate[];
   farleySteps: number;
-  text: string;
+  searchText: string;
+  formText: string;
   mode: string;
   error: {
     message: string,
@@ -37,7 +38,8 @@ class App extends React.Component<{}, AppState> {
     this.state = {
         candidates: [],
         farleySteps: 40,
-        text: '',
+        searchText: '',
+        formText: '',
         mode: 'Search',
         error: {
           message: '',
@@ -57,17 +59,9 @@ class App extends React.Component<{}, AppState> {
           ></Navbar>
         </div>
 
-        { this.renderInput() }  
+        { this.renderSpeechBubble() }
 
-        <div 
-          className='Autocomplete-client__Farley-container'
-          style={ { paddingLeft: this.state.farleySteps + 'px' } }>
-          <SpeechBubble
-            errorMessage={ this.state.error.isError ? this.state.error.message : undefined }
-            candidates={ this.state.candidates }
-            handleClick={ this.handleCandidateSelection }
-          ></SpeechBubble>
-        </div>
+        { this.renderInput() }  
 
         <div className='Autocomplete-client__Footer-container'>
           <Footer></Footer>
@@ -80,9 +74,11 @@ class App extends React.Component<{}, AppState> {
     if (this.state.mode === Modes.TRAIN) {
       return (
         <div className='Autocomplete-client__train-form-container'>
-          <TrainForm
+          <TrainingForm
+            text={ this.state.formText }
             handleSubmit={ this.handleTrainSubmission }
-          ></TrainForm>
+            handleInput={ this.handleFormInputChange }
+          ></TrainingForm>
         </div>
       );
     } else {
@@ -90,8 +86,24 @@ class App extends React.Component<{}, AppState> {
         <div className='Autocomplete-client__Input-container'>
           <Input 
             handleInput={ this.handleInputChange }
-            text={ this.state.text }
+            text={ this.state.searchText }
           ></Input>
+        </div>
+      );
+    }
+  }
+
+  renderSpeechBubble(): JSX.Element | void {
+    if (this.state.mode !== Modes.TRAIN) {
+      return (
+        <div 
+          className='Autocomplete-client__speech-bubble-container'
+          style={ { paddingLeft: this.state.farleySteps + 'px' } }>
+          <SpeechBubble
+            errorMessage={ this.state.error.isError ? this.state.error.message : undefined }
+            candidates={ this.state.candidates }
+            handleClick={ this.handleCandidateSelection }
+          ></SpeechBubble>
         </div>
       );
     }
@@ -102,7 +114,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   handleInputChange = async(text: string): Promise<void> => {
-    this.setState({ text });
+    this.setState({ searchText: text });
     
     const currentFragment = this.getCurrentWordFragment(text);
 
@@ -116,10 +128,15 @@ class App extends React.Component<{}, AppState> {
     }
   }
 
+  handleFormInputChange = (text: string): void => {
+    this.setState({ formText: text });
+  }
+
   handleTrainSubmission = (passage: string): void => {
     try {
       if (passage) {
         AUTOCOMPLETE_PROVIDER.train(passage);
+        this.setState({ formText: '', mode: Modes.SEARCH });
       }
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
@@ -128,7 +145,7 @@ class App extends React.Component<{}, AppState> {
 
   handleCandidateSelection = (word: string): void => {
     const updatedInputText = this.generateUpdatedInputText(word);
-    this.setState({ text: updatedInputText, candidates: [] });
+    this.setState({ searchText: updatedInputText, candidates: [] });
   }
 
   private getCurrentWordFragment(text: string): string {
@@ -164,7 +181,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   private generateUpdatedInputText(word: string) {
-    const tokens = this.state.text.split(' '); 
+    const tokens = this.state.searchText.split(' '); 
 
     tokens[tokens.length - 1] = word;
 

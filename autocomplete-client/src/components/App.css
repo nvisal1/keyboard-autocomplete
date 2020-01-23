@@ -33,7 +33,7 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
-.Autocomplete-client__Farley-container {
+.Autocomplete-client__speech-bubble-container {
   max-width: var(--app-max-width);
   padding: var(--app-padding);
   margin: auto;
