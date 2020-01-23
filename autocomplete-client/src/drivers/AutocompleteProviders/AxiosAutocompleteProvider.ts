@@ -26,7 +26,7 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
      * getWords makes a request to the Autocomplete Service to get
      * a list of Candidates for a given word fragment.
      * The Autocomplete Service is expected to return a status
-     * of 200. This function will throw an errorif any other status 
+     * of 200. This function will throw an error if any other status 
      * code is returned.
      */
     async getWords(fragment: string): Promise<Candidate[]> {
