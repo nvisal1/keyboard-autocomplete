@@ -120,9 +120,9 @@ export class Trie implements SearchDriver {
      * letter in the characters array to start with. It then appends a new
      * child node for each remaining letter. 
      * 
-     * Example: subtree root = 'r' at level 5, characters = ['t', 'r', 'u', 'c', 'k']
+     * Example: subtree root = 'r' at level 2, characters = ['t', 'r', 'u', 'c', 'k']
      * 
-     * New path = 'r' level 5 -> 'u' level 6 -> 'c' level 7 -> 'k' level 8
+     * New path = 'r' level 2 -> 'u' level 3 -> 'c' level 4 -> 'k' level 5
      * 
      * The last node is marked with isEnd = true in order to indicate the end of a word.
      */
