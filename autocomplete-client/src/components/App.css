@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--asymmetrik-light-grey);
+  min-height: 680px;
 }
 
 .Autocomplete-client__Navbar-container {
@@ -16,26 +17,26 @@
 .Autocomplete-client__Input-container {
   max-width: var(--app-max-width);
   margin: auto;
-  padding: var(--app-padding);
-  height: 30%;
+  padding: var(--app-vertical-padding) var(--app-horizontal-padding);
+  height: 100px;
   margin-top: auto;
   margin-bottom: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 20%; left: 0; right: 0;
 }
 
-.Autocomplete-client__train-form-container {
+.Autocomplete-client__Training-Form-container {
   max-width: var(--app-max-width);
-  padding: var(--app-padding);
+  padding: var(--app-vertical-padding) var(--app-horizontal-padding);
   height: 50%;
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 20%; left: 0; right: 0;
 }
 
-.Autocomplete-client__speech-bubble-container {
+.Autocomplete-client__Speech-Bubble-container {
   max-width: var(--app-max-width);
-  padding: var(--app-padding);
+  padding: var(--app-vertical-padding) var(--app-horizontal-padding);
   margin: auto;
   position: absolute;
   right: 0;

@@ -6,7 +6,8 @@
   --app-white: white;
 
   /* Alignment */
-  --app-padding: 40px;
+  --app-horizontal-padding: 70px;
+  --app-vertical-padding: 20px;
   --app-max-width: 1440px;
 }
 

@@ -3,7 +3,7 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     box-sizing: border-box;
     height: 150px;
-    padding: var(--app-padding);
+    padding: var(--app-vertical-padding) var(--app-horizontal-padding);
 }
 
 .navbar__alignment-container {

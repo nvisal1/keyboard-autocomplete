@@ -4,15 +4,15 @@
 
 .speech-bubble__Farley-container {
     position: relative;
-    left: -180px;
+    left: -170px;
 }
 
 .speech-bubble__text-container {
     position: absolute;
-    bottom: 50%;
+    bottom: 48%;
     border-radius: 15px;
-    background-color: var(--app-white);
     padding: 20px;
+    background-color: var(--app-white);
     box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     font-size: 36px;
@@ -32,12 +32,11 @@
 .speech-bubble__text-container__word {
     margin: 0;
     cursor: pointer;
+    width: 100%;
 }
 
 .speech-bubble__text-container__word:hover {
-    background-color: var(--asymmetrik-red);;
-    color: var(--app-white);
-    border-radius: 15px;
+    color: var(--asymmetrik-red);
 }
 
 .speech-bubble__text-container__error-message {

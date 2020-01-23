@@ -17,9 +17,11 @@ export class Autocomplete implements AutocompleteProvider {
     }    
 
     train(passage: string): void {
-        const tokens = passage.split(' ');
-        tokens.forEach((token: string) => {
-            SEARCH_DRIVER.insert(token);
-        });
+        if (passage.length) {
+            const tokens = passage.split(' ');
+            tokens.forEach((token: string) => {
+                SEARCH_DRIVER.insert(token);
+            });
+        }
     }
 }

@@ -59,7 +59,7 @@ async function train(req: Request, res: Response): Promise<void> {
         const passage = req.body.passage;
 
         // return a 400 Bad Request to client if passage property is not provided in request body
-        if (!passage && !passage.length) {
+        if (!passage && passage !== '') {
             const badRequestError = new ResourceError(
                 'A \'passage\' property must be provided in the request body. Format: \'body\': { \'passage\': \'<words>\' }',
                 ResourceErrorReason.BAD_REQUEST,
