@@ -188,7 +188,7 @@ class App extends React.Component<{}, AppState> {
    */
   handleTrainingFormSubmission = (passage: string): void => {
     this.train(passage);
-    this.setState({ mode: Modes.SEARCH });
+    this.setState({ mode: Modes.SEARCH, trainingPassage: '' });
   }
 
   /**
