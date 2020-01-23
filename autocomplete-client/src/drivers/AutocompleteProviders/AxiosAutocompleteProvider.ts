@@ -10,8 +10,8 @@ export enum HTTPStatus {
 }
 
 export enum ErrorMessages {
-    TROUBLE_CONNECTING = 'We are having trouble connecting to the autocomplete service. Please try again later.',
-    SERVER_IS_DOWN = 'The autocomplete service is experiencing downtime. Please try again later.'
+    TROUBLE_CONNECTING = 'We are having trouble connecting to the Autocomplete Service. Please try again later.',
+    SERVER_IS_DOWN = 'The Autocomplete Service is experiencing downtime. Please try again later.'
 }
 
 export class AxiosAutocompleteProvider implements AutocompleteProvider {

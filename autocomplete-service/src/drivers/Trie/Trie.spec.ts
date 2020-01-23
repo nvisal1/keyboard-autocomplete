@@ -107,7 +107,7 @@ describe('When a new Trie is created', () => {
         describe('and the query contains capital letters', () => {
             it('should convert query to lowercase and match the same words', () => {
                 const trie = new Trie();
-                const words = ['t', 'TEA', 'test', 'tech', 'teach', 'teacher', 'television', 'unrelated'];
+                const words = ['t', 'TEA', 'test', 'tech', 'teach', 'teacher', 'tecks', 'television', 'unrelated'];
 
                 words.forEach((word: string) => {
                     trie.insert(word);
@@ -115,7 +115,7 @@ describe('When a new Trie is created', () => {
 
                 const query = 'TE';
 
-                const expectedWords = ['tea', 'test', 'tech', 'teach', 'teacher'];
+                const expectedWords = ['tea', 'test', 'tech', 'teach', 'tecks'];
 
                 let expectedCandidates = expectedWords.map((word: string) => {
                     return new Candidate(word, word.length - query.length);
