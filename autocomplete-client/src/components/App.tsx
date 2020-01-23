@@ -20,7 +20,9 @@ interface AppState {
   candidates: Candidate[];
   farleySteps: number;
   searchText: string;
-  formText: string;
+  bothText: string;
+  trainingPassage: string;
+
   mode: string;
   error: {
     message: string,
@@ -39,7 +41,8 @@ class App extends React.Component<{}, AppState> {
         candidates: [],
         farleySteps: 40,
         searchText: '',
-        formText: '',
+        bothText: '',
+        trainingPassage: '',
         mode: 'Search',
         error: {
           message: '',
@@ -71,25 +74,35 @@ class App extends React.Component<{}, AppState> {
   }
 
   renderInput(): JSX.Element {
-    if (this.state.mode === Modes.TRAIN) {
-      return (
-        <div className='Autocomplete-client__train-form-container'>
-          <TrainingForm
-            text={ this.state.formText }
-            handleSubmit={ this.handleTrainSubmission }
-            handleInput={ this.handleFormInputChange }
-          ></TrainingForm>
-        </div>
-      );
-    } else {
-      return (
-        <div className='Autocomplete-client__Input-container'>
-          <Input 
-            handleInput={ this.handleInputChange }
-            text={ this.state.searchText }
-          ></Input>
-        </div>
-      );
+    switch(this.state.mode) {
+      case Modes.TRAIN:
+        return (
+          <div className='Autocomplete-client__train-form-container'>
+            <TrainingForm
+              text={ this.state.trainingPassage }
+              handleSubmit={ this.handleTrainSubmission }
+              handleInput={ this.handleFormInputChange }
+            ></TrainingForm>
+          </div>
+        );
+      case Modes.BOTH:
+        return (
+          <div className='Autocomplete-client__Input-container'>
+            <Input 
+              handleInput={ this.handleBothInputChange }
+              text={ this.state.bothText }
+            ></Input>
+          </div>
+        );
+      default:
+        return (
+          <div className='Autocomplete-client__Input-container'>
+            <Input 
+              handleInput={ this.handleSearchInputChange }
+              text={ this.state.searchText }
+            ></Input>
+          </div>
+        );
     }
   }
 
@@ -113,7 +126,7 @@ class App extends React.Component<{}, AppState> {
     this.setState({ mode });
   }
 
-  handleInputChange = async(text: string): Promise<void> => {
+  handleSearchInputChange = async(text: string): Promise<void> => {
     this.setState({ searchText: text });
     
     const currentFragment = this.getCurrentWordFragment(text);
@@ -128,15 +141,42 @@ class App extends React.Component<{}, AppState> {
     }
   }
 
+  handleBothInputChange = async(text: string): Promise<void>  => {
+    this.setState({ bothText: text });
+
+    const currentWordFragment = this.getCurrentWordFragment(text);
+
+    if (!currentWordFragment) {
+      const tokens = text.split(' '); 
+      const fragment = tokens[tokens.length - 2];
+      try {
+        if (fragment) {
+          AUTOCOMPLETE_PROVIDER.train(fragment);
+        }
+      } catch (error) {
+        this.setState({ error: { message: error.message, isError: true }});
+      }
+    } else {
+      const candidates = await this.getCandidates(currentWordFragment);
+
+      if (candidates) {
+        this.setState({ 
+          candidates, 
+          farleySteps: this.calculateFarleySteps(text),
+        });
+      }
+    }
+  }
+
   handleFormInputChange = (text: string): void => {
-    this.setState({ formText: text });
+    this.setState({ trainingPassage: text });
   }
 
   handleTrainSubmission = (passage: string): void => {
     try {
       if (passage) {
         AUTOCOMPLETE_PROVIDER.train(passage);
-        this.setState({ formText: '', mode: Modes.SEARCH });
+        this.setState({ trainingPassage: '', mode: Modes.SEARCH });
       }
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
@@ -156,11 +196,8 @@ class App extends React.Component<{}, AppState> {
 
   private async getCandidates(currentFragment: string): Promise<Candidate[] | undefined> {
     try {
-      if (currentFragment !== '') {
-        const candidates = await AUTOCOMPLETE_PROVIDER.getWords(currentFragment);
-        return candidates;
-      }
-      return [];
+      const candidates = await AUTOCOMPLETE_PROVIDER.getWords(currentFragment);
+      return candidates;
     } catch (error) {
       this.setState({ error: { message: error.message, isError: true }});
     }

@@ -5,6 +5,10 @@ import { Candidate } from '../shared/types/Candidate';
 export class Autocomplete implements AutocompleteProvider {
 
     getWords(fragment: string): Candidate[] {
+        if (!fragment.length) {
+            return [];
+        }
+        
         let candidates = SEARCH_DRIVER.search(fragment);
 
         // Sort candidates by confidence (ascending order)
