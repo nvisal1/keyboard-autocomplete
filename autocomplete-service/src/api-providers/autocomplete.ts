@@ -4,6 +4,16 @@ import { Candidate } from '../shared/types/Candidate';
 
 export class Autocomplete implements AutocompleteProvider {
 
+    /**
+     * getWords accepts a word fragment and uses it
+     * to query for Candidates through a SearchDriver.
+     * 
+     * If an empty string is provided, an empty array
+     * is returned.
+     * 
+     * Candidates are sorted in ascending order by
+     * confidence before return.
+     */
     getWords(fragment: string): Candidate[] {
         if (!fragment.length) {
             return [];
@@ -16,6 +26,10 @@ export class Autocomplete implements AutocompleteProvider {
         return candidates; 
     }    
 
+    /**
+     * train accepts a passage and inserts each word
+     * into the autocomplete algorithm.
+     */
     train(passage: string): void {
         if (passage.length) {
             const tokens = passage.split(' ');

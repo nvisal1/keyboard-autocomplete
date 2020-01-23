@@ -146,7 +146,7 @@ export class Trie implements SearchDriver {
     /**
      * getMatches performs a recursive depth-first search across the tree and
      * stores the first <MAX_MATCH_LENGTH> matches within an array. If the matches
-     * array hits capacity before the traversal is complete, the function will
+     * array reaches capacity before the traversal is complete, the function will
      * skip over branches that have more levels than the longest match. If a shorter
      * match is found, the new match will replace the longest match.
      */
