@@ -7,7 +7,7 @@ services:
         ports: 
             - "80:80"
         environment: 
-            - AUTOCOMPLETE_SERVICE: http://autocomplete-service:5000
+            - AUTOCOMPLETE_SERVICE: autocomplete-service:5000
         restart: on-failure
     
     autocomplete-service:

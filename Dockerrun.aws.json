@@ -6,13 +6,27 @@
             "image": "nvisal1/autocomplete-client",
             "hostname": "autocomplete-client",
             "essential": false,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["autocomplete-service"]
         },
         {
             "name": "autocomplete-service",
             "image": "nvisal1/autocomplete-service",
             "hostname": "autocomplete-service",
-            "essential": true
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 5000,
+                    "containerPort": 5000
+                }
+            ]
         }
-    ],
-    "links": ["autocomplete-client", "autocomplete-service"]
+    ]
 }

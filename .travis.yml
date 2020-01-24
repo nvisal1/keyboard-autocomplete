@@ -14,11 +14,24 @@ script:
 
 after_success:
     # Build the production image for the client
-    - docker build -t nvisal1/autocomplete-client -f autocomplete-client .
+    - docker build -t nvisal1/autocomplete-client autocomplete-client
 
     # Login and push the production client image and
     # standard service image to Dockerhub
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
     - docker push nvisal1/autocomplete-client
     - docker push nvisal1/autocomplete-service
+
+deploy:
+    provider: elasticbeanstalk
+    region: us-east-1
+    app: Keyboard-Autocomplete-Algorithm
+    env: KeyboardAutocompleteAlgorithm-env
+    bucket_name: elasticbeanstalk-us-east-1-877903774846
+    bucket_path: Keyboard-Autocomplete-Algorithm
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key:
+        secure: $AWS_SECRET_ACCESS_KEY
