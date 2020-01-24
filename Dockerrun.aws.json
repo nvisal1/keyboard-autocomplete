@@ -2,6 +2,19 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
+            "name": "autocomplete-service",
+            "image": "nvisal1/autocomplete-service",
+            "hostname": "autocomplete-service",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 5000,
+                    "containerPort": 5000
+                }
+            ]
+        },
+        {
             "name": "autocomplete-client",
             "image": "nvisal1/autocomplete-client",
             "hostname": "autocomplete-client",
@@ -14,19 +27,6 @@
                 }
             ],
             "links": ["autocomplete-service"]
-        },
-        {
-            "name": "autocomplete-service",
-            "image": "nvisal1/autocomplete-service",
-            "hostname": "autocomplete-service",
-            "essential": true,
-            "memory": 128,
-            "portMappings": [
-                {
-                    "hostPort": 5000,
-                    "containerPort": 5000
-                }
-            ]
         }
     ]
 }
