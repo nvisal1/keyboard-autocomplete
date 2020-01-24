@@ -40,11 +40,15 @@ $ docker build -t client .
 $ docker run -p 80:80 client
 ```
 
+Note: the production image will run on localhost:80 and use production backend.
+
 #### Dockerhub
 
 ```
 $ docker run nvisal1/autocomplete-client
 ```
+
+Note: the production image will run on localhost:80 and use production backend.
 
 
 ### React Scripts
