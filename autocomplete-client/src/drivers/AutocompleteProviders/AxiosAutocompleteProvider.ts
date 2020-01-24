@@ -19,7 +19,7 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
     private axios: AxiosInstance;
 
     constructor() {
-        this.axios = axios.create({ baseURL: process.env.NODE_ENV === 'production' ? 'http://keyboardautocompletealgorithm-env.mqfpgdum8p.us-east-1.elasticbeanstalk.com:5000' : 'localhost:5000' });
+        this.axios = axios.create({ baseURL: process.env.NODE_ENV === 'production' ? 'http://keyboardautocompletealgorithm-env.mqfpgdum8p.us-east-1.elasticbeanstalk.com:5000' : 'http://localhost:5000' });
     }
 
     /**
@@ -37,7 +37,7 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
                 throw new Error(ErrorMessages.TROUBLE_CONNECTING);
             }
 
-            const candidates = <Candidate[]>response.data;
+            const candidates = response.data as Candidate[];
             return candidates;
 
         } catch (httpError) {
