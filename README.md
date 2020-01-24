@@ -59,7 +59,7 @@ $ npm i
 $ node train.js
 ```
 
-### CI/CD
+## CI/CD
 
 Every push to the master branch triggers a Travis CI workflow that runs all tests and deploys the new code to production.
 
