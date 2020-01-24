@@ -1,5 +1,7 @@
 # Keyboard Autocomplete [![Build Status](https://travis-ci.org/nvisal1/keyboard-autocomplete.svg?branch=master)](https://travis-ci.org/nvisal1/keyboard-autocomplete)
 
+View this application at http://keyboardautocompletealgorithm-env.mqfpgdum8p.us-east-1.elasticbeanstalk.com/
+
 ## Introduction
 
 The purpose of this project is to implement an algorithm that will learn the words typed by the user over time and then determine a ranked list of autocomplete candidates given a word fragment. The algorithm is capable of being trained in an online manner, meaning that additional training passages can be submitted and incorporated into the algorithm at the same time as the algorithm is being used to provide autocomplete suggestions.
@@ -56,6 +58,10 @@ $ cd autocomplete-training
 $ npm i
 $ node train.js
 ```
+
+### CI/CD
+
+Every push to the master branch triggers a Travis CI workflow that runs all tests and deploys the new code to production.
 
 
 ## README References
