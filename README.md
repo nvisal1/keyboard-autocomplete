@@ -36,6 +36,8 @@ The following command will override the `docker-compose.yml` file at the root wi
 $ docker-compose -f docker-compose.yml -f docker-compose-overrides/docker-compose.local.yml up
 ```
 
+The client will be visible at localhost:80
+
 #### 
 
 #### Dockerhub
@@ -45,6 +47,8 @@ The following command will use the `docker-compose.yml` file at the root. This s
 ```
 $ docker-compose up
 ```
+
+The client will be visible at localhost:80
 
 ## Training The Algorithm
 
