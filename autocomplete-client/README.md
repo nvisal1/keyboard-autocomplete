@@ -2,6 +2,24 @@
 
 The Autocomplete Client provides a user interface for communicating with the Autocomplete Service. 
 
+## Modes
+
+### Search
+
+Search allows users to type words into an input field and view
+relevant Candidates for each word fragment.
+
+### Train
+
+Train allows users to enter text passages into a form and submit
+them. Each word in the text passage is entered into the algorithm.
+
+### Search & Train
+
+Search & Train allows users to type words into an input field and view
+relevant Candidates for each word fragment. Every new word is entered
+into the algorithm as the user searches.
+
 
 ## Tests
 
