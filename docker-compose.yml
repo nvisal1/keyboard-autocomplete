@@ -6,6 +6,8 @@ services:
         image: nvisal1/autocomplete-client
         ports: 
             - "80:80"
+        environment: 
+            - AUTOCOMPLETE_SERVICE: http://autocomplete-service:5000
         restart: on-failure
     
     autocomplete-service:

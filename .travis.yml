@@ -1,0 +1,13 @@
+services:
+    - docker
+
+before_install:
+    - docker build -t nvisal1/autocomplete-client-test -f ./autocomplete-client/Dockerfile.dev
+    - docker build -t nvisal1/autocomplete-service -f ./autocomplete-service
+
+script:
+    - docker run nvisal1/autocomplete-client-test npm test
+    - docker run nvisal1/autocomplete-service npm test
+
+after_success:
+    - docker build -t nvisal1/autocomplete-client -f ./autocomplete-client

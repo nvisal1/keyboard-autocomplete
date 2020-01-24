@@ -54,6 +54,30 @@ exports[`When the App component is created should render correctly 1`] = `
     </div>
   </div>
   <div
+    className="Autocomplete-client__Speech-Bubble-container"
+  >
+    <div
+      className="speech-bubble"
+    >
+      <div
+        className="speech-bubble__Farley-container"
+      >
+        <img
+          alt="Farley"
+          className="farley__image-container"
+          src="Farley.png"
+        />
+      </div>
+      <div
+        className="speech-bubble__text-container"
+      >
+        <div
+          className="speech-bubble__pointer-container"
+        />
+      </div>
+    </div>
+  </div>
+  <div
     className="Autocomplete-client__Input-container"
   >
     <div
@@ -85,35 +109,6 @@ exports[`When the App component is created should render correctly 1`] = `
         onChange={[Function]}
         value=""
       />
-    </div>
-  </div>
-  <div
-    className="Autocomplete-client__Farley-container"
-    style={
-      Object {
-        "paddingLeft": "40px",
-      }
-    }
-  >
-    <div
-      className="speech-bubble"
-    >
-      <div
-        className="speech-bubble__Farley-container"
-      >
-        <img
-          alt="Farley"
-          className="farley__image-container"
-          src="Farley.png"
-        />
-      </div>
-      <div
-        className="speech-bubble__text-container"
-      >
-        <div
-          className="speech-bubble__pointer-container"
-        />
-      </div>
     </div>
   </div>
   <div

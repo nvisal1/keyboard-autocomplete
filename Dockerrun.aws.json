@@ -1,0 +1,18 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "autocomplete-client",
+            "image": "nvisal1/autocomplete-client",
+            "hostname": "autocomplete-client",
+            "essential": false,
+        },
+        {
+            "name": "autocomplete-service",
+            "image": "nvisal1/autocomplete-service",
+            "hostname": "autocomplete-service",
+            "essential": true
+        }
+    ],
+    "links": ["autocomplete-client", "autocomplete-service"]
+}

@@ -1,0 +1,12 @@
+FROM node:12-alpine
+
+RUN npm install react-scripts@3.0.1 -g --silent
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install --silent
+
+COPY . .
+
+CMD ["npm", "start"]
