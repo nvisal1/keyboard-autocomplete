@@ -9,7 +9,7 @@ before_install:
 
 script:
     # Run all unit tests by overriding the CMD for both images
-    - docker run nvisal1/autocomplete-client-test npm test
+    - docker run -e CI=true nvisal1/autocomplete-client-test npm test
     - docker run nvisal1/autocomplete-service npm test
 
 after_success:
