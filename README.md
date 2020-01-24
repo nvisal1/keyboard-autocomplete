@@ -30,25 +30,15 @@ This section will explain how to run both projects with Docker.
 
 #### Local Build
 
-The following command will override the `docker-compose.yml` file at the root with instructions to build each project image locally.
-
-```
-$ docker-compose -f docker-compose.yml -f docker-compose-overrides/docker-compose.local.yml up
-```
-
-The client will be visible at localhost:80
-
-#### 
-
-#### Dockerhub
-
-The following command will use the `docker-compose.yml` file at the root. This script will pull and run the already-built images from Dockerhub.
+The following command will build both project images locally.
 
 ```
 $ docker-compose up
 ```
 
-The client will be visible at localhost:80
+The client will be visible at localhost:3000
+
+#### 
 
 ## Training The Algorithm
 
