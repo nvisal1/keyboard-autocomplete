@@ -9,7 +9,7 @@ type SubtreeRoot = {
 
 type Matches = {
     words: string[],
-     maxStringLength: number,
+    maxStringLength: number,
 }
 
 const MAX_MATCH_LENGTH = 5;
