@@ -1,4 +1,4 @@
-# Keyboard Autocomplete
+# Keyboard Autocomplete [![Build Status](https://travis-ci.org/nvisal1/keyboard-autocomplete.svg?branch=master)](https://travis-ci.org/nvisal1/keyboard-autocomplete)
 
 ## Introduction
 
