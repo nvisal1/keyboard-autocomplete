@@ -6,6 +6,8 @@ services:
         image: nvisal1/autocomplete-client
         ports: 
             - "80:80"
+        environment:
+            - NODE_ENV=development
         restart: on-failure
     
     autocomplete-service:
