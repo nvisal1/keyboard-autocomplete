@@ -3,15 +3,10 @@ version: '3.7'
 services:
     
     autocomplete-client:
-        image: nvisal1/autocomplete-client
-        ports: 
-            - "80:80"
-        environment:
-            - NODE_ENV=development
-        restart: on-failure
-    
+        build: ./autocomplete-client/Dockerfile.dev.yml
+
     autocomplete-service:
-        image: nvisal1/autocomplete-service
+        build: ./autocomplete-service
         ports:
             - "5000:5000"
         restart: on-failure
