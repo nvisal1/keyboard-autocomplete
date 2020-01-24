@@ -19,7 +19,7 @@ export class AxiosAutocompleteProvider implements AutocompleteProvider {
     private axios: AxiosInstance;
 
     constructor() {
-        this.axios = axios.create({ baseURL: process.env.NODE === 'production' ? 'http://autocomplete-service:5000' : 'http://localhost:5000' });
+        this.axios = axios.create({ baseURL: process.env.NODE_ENV === 'production' ? 'http://autocomplete-service:5000' : 'http://localhost:5000' });
     }
 
     /**
