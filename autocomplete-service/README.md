@@ -76,7 +76,7 @@ $ docker build -t autocomplete-service .
 $ docker run -p 5000:5000 autocomplete-service
 ```
 
-### React Scripts
+### NPM
 ```
 $ npm i
 $ npm run build
